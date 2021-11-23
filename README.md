@@ -8,10 +8,8 @@ I am developing it as a capstone project for Neue Fische Bootcamp.
 To install use:
 
 ```
-yarn install
+npm install
 ```
-
-I have opted for using yarn instead of npm, because of peer dependency issues between Material UI and Emotion.
 
 To run the development server use:
 
@@ -23,7 +21,6 @@ npm run client:dev
 
 - React
 - Typescript
-- Styled Components
 - Material UI
 - Storybook
 
