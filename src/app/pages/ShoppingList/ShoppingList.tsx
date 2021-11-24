@@ -12,7 +12,7 @@ export default (props: Props): JSX.Element => (
     <Typography>Shopping List</Typography>
     <List>
       {props.items.map((item) => (
-        <ShoppingListItem item={item} />
+        <ShoppingListItem key={item.id} item={item} />
       ))}
     </List>
   </>
