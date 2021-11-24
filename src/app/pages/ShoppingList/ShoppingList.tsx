@@ -1,8 +1,10 @@
-import { Checkbox, List, ListItem, Typography } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import React from 'react';
+import type { ShoppingListItemType } from '../../components/ShoppingListItem';
+import ShoppingListItem from '../../components/ShoppingListItem';
 
 type Props = {
-  items: { title: string }[];
+  items: ShoppingListItemType[];
 };
 
 export default (props: Props): JSX.Element => (
@@ -10,11 +12,7 @@ export default (props: Props): JSX.Element => (
     <Typography>Shopping List</Typography>
     <List>
       {props.items.map((item) => (
-        <ListItem>
-          {' '}
-          <Checkbox edge="start" />
-          {item.title}
-        </ListItem>
+        <ShoppingListItem item={item} />
       ))}
     </List>
   </>
