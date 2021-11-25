@@ -1,5 +1,11 @@
 import './index.css';
-import { Checkbox, FormControlLabel, ListItem } from '@mui/material';
+import {
+  Checkbox,
+  FormControlLabel,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateShoppingListItem } from '../../reducers/shoppingListReducer';
@@ -31,17 +37,16 @@ export default (props: Props): JSX.Element => {
 
   return (
     <ListItem>
-      <FormControlLabel
-        className={props.item.checked ? 'crossed-off' : ''}
-        label={props.item.title}
-        control={
-          <Checkbox
-            onChange={handleChange}
-            edge="start"
-            checked={props.item.checked}
-          />
-        }
-      />
+      <ListItemIcon>
+        <Checkbox
+          onChange={handleChange}
+          edge="start"
+          checked={props.item.checked}
+        />
+      </ListItemIcon>
+      <ListItemText className={props.item.checked ? 'crossed-off' : ''}>
+        {props.item.title}
+      </ListItemText>
     </ListItem>
   );
 };
