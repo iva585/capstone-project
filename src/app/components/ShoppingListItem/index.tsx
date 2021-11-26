@@ -1,11 +1,13 @@
 import './index.css';
 import {
   Checkbox,
+  IconButton,
   ListItem,
   ListItemIcon,
   ListItemText,
   TextField,
 } from '@mui/material';
+import DoneIcon from '@mui/icons-material/Done';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateShoppingListItem } from '../../reducers/shoppingListReducer';
@@ -64,16 +66,18 @@ export default (props: Props): JSX.Element => {
       </ListItemIcon>
       <ListItemText className={props.item.checked ? 'crossed-off' : ''}>
         {editing ? (
-          <TextField
-            id="standard-basic"
-            variant="standard"
-            value={props.item.title}
-            onChange={handleUpdate}
-          />
+          <>
+            <TextField
+              id="standard-basic"
+              variant="standard"
+              value={props.item.title}
+              onChange={handleUpdate}
+            />
+            <IconButton aria-label="done" color="primary">
+              <DoneIcon onClick={handleClick} />
+            </IconButton>
+          </>
         ) : (
-          // define input value
-          // define WHEN the state is changed back to editable=false
-
           <span onClick={handleClick}>{props.item.title}</span>
         )}
       </ListItemText>
