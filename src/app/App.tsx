@@ -1,15 +1,11 @@
-import { Typography } from '@mui/material';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ShoppingList from './pages/ShoppingList/ShoppingList';
 
-function App(): JSX.Element {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Typography>Hello World</Typography>} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default (): JSX.Element => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/shopping-list" element={<ShoppingList />} />
+    </Routes>
+  </BrowserRouter>
+);
