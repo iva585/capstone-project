@@ -71,8 +71,8 @@ export default (props: Props): JSX.Element => {
               value={props.item.title}
               onChange={handleUpdate}
             />
-            <IconButton aria-label="done" color="primary">
-              <DoneIcon onClick={handleClick} />
+            <IconButton onClick={handleClick} aria-label="done" color="primary">
+              <DoneIcon />
             </IconButton>
           </>
         ) : (
