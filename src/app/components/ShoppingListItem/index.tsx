@@ -91,7 +91,13 @@ export default (props: Props): JSX.Element => {
             </IconButton>
           </>
         ) : (
-          <span onClick={handleClick}>{props.item.title}</span>
+          <span onClick={handleClick}>
+            {props.item.title === '' ? (
+              <i className="placeholder">Click to add an item</i>
+            ) : (
+              props.item.title
+            )}
+          </span>
         )}
       </ListItemText>
     </ListItem>
