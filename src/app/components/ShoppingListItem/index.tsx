@@ -31,9 +31,7 @@ export default (props: Props): JSX.Element => {
     setEditing((current) => !current);
   };
 
-  const handleUpdate = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLInputElement>
-  ) => {
+  const handleUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
     const title = event.target.value;
     dispatch(
       updateShoppingListItem({
