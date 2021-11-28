@@ -22,9 +22,14 @@ const shoppingListSlice = createSlice({
         return item;
       });
     },
+    deleteShoppingListItem(state, action: PayloadAction<ShoppingListItemType>) {
+      return [...state].filter((item) => item.id !== action.payload.id);
+    },
   },
 });
 
 export const { updateShoppingListItem } = shoppingListSlice.actions;
+
+export const { deleteShoppingListItem } = shoppingListSlice.actions;
 
 export default shoppingListSlice.reducer;
