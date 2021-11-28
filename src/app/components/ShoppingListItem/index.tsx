@@ -87,7 +87,7 @@ export default (props: Props): JSX.Element => {
               <DoneIcon />
             </IconButton>
             <IconButton onClick={handleDelete}>
-              <DeleteIcon />
+              <DeleteIcon color="primary" />
             </IconButton>
           </>
         ) : (
