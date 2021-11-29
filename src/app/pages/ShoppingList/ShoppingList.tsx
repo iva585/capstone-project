@@ -1,6 +1,7 @@
 import { List, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ListForm from '../../components/ListForm';
 import ShoppingListItem from '../../components/ShoppingListItem';
 import type { RootState } from '../../store';
 
@@ -19,6 +20,7 @@ export default (): JSX.Element => {
             <ShoppingListItem key={item.id} item={item} />
           ))}
       </List>
+      <ListForm />
     </>
   );
 };
