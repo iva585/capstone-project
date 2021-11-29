@@ -22,7 +22,28 @@ const shoppingListSlice = createSlice({
       });
     },
     deleteShoppingListItem(state, action: PayloadAction<ShoppingListItemType>) {
-      return [...state].filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item.id !== action.payload.id);
+    },
+
+    addShoppingListItem(
+      state,
+      action: PayloadAction<ShoppingListItemType['title']>
+    ) {
+      const sortedbyIds = [...state].sort((a, b) => a.id - b.id);
+
+      const lastElement = sortedbyIds.pop();
+
+      const id: ShoppingListItemType['id'] = lastElement?.id
+        ? lastElement.id + 1
+        : 1;
+
+      const newItem: ShoppingListItemType = {
+        id,
+        title: action.payload,
+        checked: false,
+      };
+
+      return [...state, newItem];
     },
   },
 });
@@ -30,5 +51,7 @@ const shoppingListSlice = createSlice({
 export const { updateShoppingListItem } = shoppingListSlice.actions;
 
 export const { deleteShoppingListItem } = shoppingListSlice.actions;
+
+export const { addShoppingListItem } = shoppingListSlice.actions;
 
 export default shoppingListSlice.reducer;
