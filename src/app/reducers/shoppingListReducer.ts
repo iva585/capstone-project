@@ -29,7 +29,13 @@ const shoppingListSlice = createSlice({
       state,
       action: PayloadAction<ShoppingListItemType['title']>
     ) {
-      const id: ShoppingListItemType['id'] = 6;
+      const sortedbyIds = [...state].sort((a, b) => a.id - b.id);
+
+      const lastElement = sortedbyIds.pop();
+
+      const id: ShoppingListItemType['id'] = lastElement?.id
+        ? lastElement.id + 1
+        : 1;
 
       const newItem: ShoppingListItemType = {
         id,
