@@ -1,3 +1,7 @@
 .crossed-off {
   text-decoration: line-through;
 }
+
+.placeholder {
+  opacity: 40%;
+}

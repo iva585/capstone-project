@@ -7,10 +7,14 @@ import {
   ListItemText,
   TextField,
 } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateShoppingListItem } from '../../reducers/shoppingListReducer';
+import {
+  deleteShoppingListItem,
+  updateShoppingListItem,
+} from '../../reducers/shoppingListReducer';
 
 type ShoppingListItemType = {
   id: number;
@@ -53,6 +57,14 @@ export default (props: Props): JSX.Element => {
     );
   };
 
+  const handleDelete = () => {
+    dispatch(
+      deleteShoppingListItem({
+        ...props.item,
+      })
+    );
+  };
+
   return (
     <ListItem>
       <ListItemIcon>
@@ -71,12 +83,21 @@ export default (props: Props): JSX.Element => {
               value={props.item.title}
               onChange={handleUpdate}
             />
-            <IconButton aria-label="done" color="primary">
-              <DoneIcon onClick={handleClick} />
+            <IconButton onClick={handleClick} aria-label="done" color="primary">
+              <DoneIcon />
+            </IconButton>
+            <IconButton onClick={handleDelete}>
+              <DeleteIcon color="primary" />
             </IconButton>
           </>
         ) : (
-          <span onClick={handleClick}>{props.item.title}</span>
+          <span onClick={handleClick}>
+            {props.item.title === '' ? (
+              <i className="placeholder">Click to add an item</i>
+            ) : (
+              props.item.title
+            )}
+          </span>
         )}
       </ListItemText>
     </ListItem>
