@@ -18,6 +18,7 @@ export default (): JSX.Element => {
 
   const handleAdd = () => {
     dispatch(addShoppingListItem(inputValue));
+    setInputValue('');
   };
 
   return (
@@ -33,6 +34,7 @@ export default (): JSX.Element => {
       }}
     >
       <InputBase
+        value={inputValue}
         onChange={handleChange}
         sx={{ ml: 1, flex: 1 }}
         placeholder="Add new item"
