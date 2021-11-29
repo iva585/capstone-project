@@ -22,6 +22,7 @@ npm run client:dev
 - React
 - Typescript
 - Material UI
+- Redux
 - Storybook
 
 ## Credits
