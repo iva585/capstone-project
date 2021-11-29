@@ -82,6 +82,7 @@ export default (props: Props): JSX.Element => {
               variant="standard"
               value={props.item.title}
               onChange={handleUpdate}
+              inputProps={{ maxLength: 50 }}
             />
             <IconButton onClick={handleClick} aria-label="done" color="primary">
               <DoneIcon />

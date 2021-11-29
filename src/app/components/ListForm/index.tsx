@@ -21,7 +21,7 @@ export default (): JSX.Element => {
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Add new item"
-        inputProps={{ 'aria-label': 'add new item' }}
+        inputProps={{ 'aria-label': 'add new item', maxLength: 50 }}
       />
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
