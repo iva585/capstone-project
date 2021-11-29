@@ -28,7 +28,7 @@ export default (): JSX.Element => {
         p: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        maxWidth: 320,
+        maxWidth: '100%',
         alignSelf: 'center',
         m: 1,
       }}
