@@ -24,7 +24,7 @@ export default (): JSX.Element => {
           Shopping List
         </Typography>
       </AppBar>
-      <List>
+      <List sx={{ pt: 7 }}>
         {[...shoppingListItems]
           .sort((a, b) => (a.checked ? 1 : 0) - (b.checked ? 1 : 0))
           .map((item) => (
