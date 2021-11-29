@@ -1,6 +1,5 @@
 import { Paper, BottomNavigation, Fab } from '@mui/material';
 import React from 'react';
-import './index.css';
 
 type Props = {
   actionButtonIcon: JSX.Element;

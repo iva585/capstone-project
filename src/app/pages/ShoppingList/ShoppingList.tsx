@@ -37,7 +37,7 @@ export default (): JSX.Element => {
           ))}
       </List>
 
-      <ListForm />
+      {editing && <ListForm />}
 
       <Footer
         actionButtonIcon={editing ? <Close /> : <Add />}
