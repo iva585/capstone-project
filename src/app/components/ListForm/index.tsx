@@ -28,9 +28,10 @@ export default (): JSX.Element => {
         p: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        maxWidth: '100%',
-        alignSelf: 'center',
-        m: 1,
+        width: '100%',
+        position: 'fixed',
+        bottom: '5em',
+        m: '3px',
       }}
     >
       <InputBase

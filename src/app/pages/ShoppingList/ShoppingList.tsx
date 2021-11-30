@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, Typography, AppBar } from '@mui/material';
+import { List, Typography, AppBar, CssBaseline } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ListForm from '../../components/ListForm';
 import ShoppingListItem from '../../components/ShoppingListItem';
@@ -18,6 +18,8 @@ export default (): JSX.Element => {
 
   return (
     <>
+      <CssBaseline />
+
       <AppBar className="header">
         <Typography
           variant="h4"
@@ -29,6 +31,7 @@ export default (): JSX.Element => {
           Shopping List
         </Typography>
       </AppBar>
+
       <List sx={{ pt: 7 }}>
         {[...shoppingListItems]
           .sort((a, b) => (a.checked ? 1 : 0) - (b.checked ? 1 : 0))
