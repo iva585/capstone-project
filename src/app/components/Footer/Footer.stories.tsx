@@ -12,7 +12,7 @@ export const AddFooter = (): JSX.Element => (
   <Footer
     actionButtonIcon={<Add />}
     onClickActionButton={function (): void {
-      throw new Error('Function not implemented.');
+      console.log('action button clicked');
     }}
   />
 );
@@ -21,7 +21,7 @@ export const CloseFooter = (): JSX.Element => (
   <Footer
     actionButtonIcon={<Close />}
     onClickActionButton={function (): void {
-      throw new Error('Function not implemented.');
+      console.log('action button clicked');
     }}
   />
 );
