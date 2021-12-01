@@ -74,7 +74,10 @@ export default (props: Props): JSX.Element => {
           checked={props.item.checked}
         />
       </ListItemIcon>
-      <ListItemText className={props.item.checked ? 'crossed-off' : ''}>
+      <ListItemText
+        className={props.item.checked ? 'crossed-off' : ''}
+        sx={{ wordWrap: 'break-word' }}
+      >
         {editing ? (
           <>
             <TextField
@@ -83,7 +86,6 @@ export default (props: Props): JSX.Element => {
               value={props.item.title}
               onChange={handleUpdate}
               inputProps={{ maxLength: 50 }}
-              sx={{ wordWrap: 'break-word' }}
             />
             <IconButton onClick={handleClick} aria-label="done" color="primary">
               <DoneIcon />
