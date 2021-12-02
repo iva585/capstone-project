@@ -20,7 +20,7 @@ export default (): JSX.Element => {
     <>
       <CssBaseline />
 
-      <Header />
+      <Header children="Shopping List" />
 
       <List sx={{ pt: 7 }}>
         {[...shoppingListItems]

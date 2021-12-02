@@ -2,7 +2,11 @@ import { AppBar, Typography } from '@mui/material';
 import React from 'react';
 import './index.css';
 
-export default (): JSX.Element => {
+type Props = {
+  children: string;
+};
+
+export default (props: Props): JSX.Element => {
   return (
     <AppBar className="header">
       <Typography
@@ -12,7 +16,7 @@ export default (): JSX.Element => {
           mt: 1,
         }}
       >
-        Shopping List
+        {props.children}
       </Typography>
     </AppBar>
   );
