@@ -18,6 +18,7 @@ export default (): JSX.Element => {
 
   const handleAdd = () => {
     dispatch(addShoppingListItem(inputValue));
+    setInputValue('');
   };
 
   return (
@@ -27,12 +28,14 @@ export default (): JSX.Element => {
         p: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        maxWidth: 320,
-        alignSelf: 'center',
-        m: 1,
+        width: '100%',
+        position: 'fixed',
+        bottom: '5em',
+        m: '3px',
       }}
     >
       <InputBase
+        value={inputValue}
         onChange={handleChange}
         sx={{ ml: 1, flex: 1 }}
         placeholder="Add new item"

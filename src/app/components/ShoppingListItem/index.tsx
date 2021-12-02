@@ -74,7 +74,10 @@ export default (props: Props): JSX.Element => {
           checked={props.item.checked}
         />
       </ListItemIcon>
-      <ListItemText className={props.item.checked ? 'crossed-off' : ''}>
+      <ListItemText
+        className={props.item.checked ? 'crossed-off' : ''}
+        sx={{ wordWrap: 'break-word' }}
+      >
         {editing ? (
           <>
             <TextField
