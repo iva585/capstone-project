@@ -8,6 +8,7 @@ import type { RootState } from '../../store';
 import Close from '@mui/icons-material/Close';
 import Add from '@mui/icons-material/Add';
 import Header from '../../components/Header';
+import { addShoppingListItem } from '../../reducers/shoppingListReducer';
 
 export default (): JSX.Element => {
   const [editing, setEditing] = useState<boolean>(false);
@@ -30,7 +31,7 @@ export default (): JSX.Element => {
           ))}
       </List>
 
-      {editing && <ListForm />}
+      {editing && <ListForm addListItem={addShoppingListItem} />}
 
       <Footer
         actionButtonIcon={editing ? <Close /> : <Add />}
