@@ -47,5 +47,6 @@ const inventorySlice = createSlice({
 
 export const { updateInventoryItem } = inventorySlice.actions;
 export const { deleteInventoryItem } = inventorySlice.actions;
+export const { addInventoryItem } = inventorySlice.actions;
 
 export default inventorySlice.reducer;
