@@ -5,9 +5,14 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch } from 'react-redux';
-import { addShoppingListItem } from '../../reducers/shoppingListReducer';
 
-export default (): JSX.Element => {
+import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
+
+type Props = {
+  addListItem: ActionCreatorWithPayload<string, string>;
+};
+
+export default (props: Props): JSX.Element => {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -17,7 +22,7 @@ export default (): JSX.Element => {
   };
 
   const handleAdd = () => {
-    dispatch(addShoppingListItem(inputValue));
+    dispatch(props.addListItem(inputValue));
     setInputValue('');
   };
 
