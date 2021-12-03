@@ -24,6 +24,24 @@ const inventorySlice = createSlice({
     deleteInventoryItem(state, action: PayloadAction<InventoryItemType>) {
       return state.filter((item) => item.id !== action.payload.id);
     },
+
+    addInventoryItem(state, action: PayloadAction<InventoryItemType['title']>) {
+      const sortedbyIds = [...state].sort((a, b) => a.id - b.id);
+
+      const lastElement = sortedbyIds.pop();
+
+      const id: InventoryItemType['id'] = lastElement?.id
+        ? lastElement.id + 1
+        : 1;
+
+      const newItem: InventoryItemType = {
+        id,
+        title: action.payload,
+        checked: false,
+      };
+
+      return [...state, newItem];
+    },
   },
 });
 
