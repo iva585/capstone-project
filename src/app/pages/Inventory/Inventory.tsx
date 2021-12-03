@@ -1,4 +1,4 @@
-import { List, Typography } from '@mui/material';
+import { List } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../../components/Header';

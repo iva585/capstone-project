@@ -1,8 +1,17 @@
-import { Checkbox, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import React from 'react';
+import {
+  Checkbox,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+} from '@mui/material';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateInventoryItem } from '../../reducers/inventoryReducer';
 import './index.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
 
 type InventoryItemType = {
   id: number;
@@ -17,6 +26,12 @@ type Props = {
 export default (props: Props): JSX.Element => {
   const dispatch = useDispatch();
 
+  const [editing, setEditing] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setEditing((current) => !current);
+  };
+
   const handleCheck = (
     _: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
@@ -25,6 +40,16 @@ export default (props: Props): JSX.Element => {
       updateInventoryItem({
         ...props.item,
         checked,
+      })
+    );
+  };
+
+  const handleUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const title = event.target.value;
+    dispatch(
+      updateInventoryItem({
+        ...props.item,
+        title,
       })
     );
   };
@@ -41,7 +66,31 @@ export default (props: Props): JSX.Element => {
         sx={{ wordWrap: 'break-word' }}
         className={props.item.checked ? 'crossed-off' : ''}
       >
-        {props.item.title}
+        {editing ? (
+          <>
+            <TextField
+              id="standard-basic"
+              variant="standard"
+              value={props.item.title}
+              onChange={handleUpdate}
+              inputProps={{ maxLength: 50 }}
+            />
+            <IconButton onClick={handleClick} aria-label="done" color="primary">
+              <DoneIcon />
+            </IconButton>
+            <IconButton>
+              <DeleteIcon color="primary" />
+            </IconButton>
+          </>
+        ) : (
+          <span onClick={handleClick}>
+            {props.item.title === '' ? (
+              <i className="placeholder">Click to add an item</i>
+            ) : (
+              props.item.title
+            )}
+          </span>
+        )}
       </ListItemText>
     </ListItem>
   );
