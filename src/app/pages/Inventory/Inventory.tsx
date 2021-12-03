@@ -1,6 +1,21 @@
-import { Typography } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import InventoryItem from '../../components/InventoryItem';
+import type { RootState } from '../../store';
 
 export default (): JSX.Element => {
-  return <Typography>Inventory</Typography>;
+  const inventoryItems = useSelector((state: RootState) => state.inventory);
+  return (
+    <>
+      <Typography>Inventory</Typography>
+      <List sx={{ pt: 7 }}>
+        {[...inventoryItems]
+          .sort((a, b) => (a.checked ? 1 : 0) - (b.checked ? 1 : 0))
+          .map((item) => (
+            <InventoryItem key={item.id} item={item} />
+          ))}
+      </List>
+    </>
+  );
 };

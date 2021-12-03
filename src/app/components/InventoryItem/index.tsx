@@ -17,7 +17,12 @@ export default (props: Props): JSX.Element => {
       <ListItemIcon>
         <Checkbox edge="start" checked={props.item.checked} />
       </ListItemIcon>
-      <ListItemText sx={{ wordWrap: 'break-word' }}>Some item</ListItemText>
+      <ListItemText
+        sx={{ wordWrap: 'break-word' }}
+        className={props.item.checked ? 'crossed-off' : ''}
+      >
+        {props.item.title}
+      </ListItemText>
     </ListItem>
   );
 };

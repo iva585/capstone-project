@@ -3,10 +3,10 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { InventoryItemType } from '../components/InventoryItem';
 
 const initialState: InventoryItemType[] = [
-  { id: 1, title: 'milk', checked: false },
-  { id: 2, title: 'oatmeal', checked: true },
-  { id: 3, title: 'chocolate', checked: false },
-  { id: 4, title: 'bananas', checked: false },
+  { id: 1, title: 'salad', checked: false },
+  { id: 2, title: 'tuna', checked: true },
+  { id: 3, title: 'cottage cheese', checked: false },
+  { id: 4, title: 'apples', checked: false },
 ];
 
 const inventorySlice = createSlice({
@@ -25,3 +25,5 @@ const inventorySlice = createSlice({
 });
 
 export const { updateInventoryItem } = inventorySlice.actions;
+
+export default inventorySlice.reducer;
