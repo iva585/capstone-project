@@ -1,4 +1,4 @@
-import { List } from '@mui/material';
+import { CssBaseline, List } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../../components/Header';
@@ -9,6 +9,7 @@ export default (): JSX.Element => {
   const inventoryItems = useSelector((state: RootState) => state.inventory);
   return (
     <>
+      <CssBaseline />
       <Header children="Inventory" />
       <List sx={{ pt: 7 }}>
         {[...inventoryItems]
