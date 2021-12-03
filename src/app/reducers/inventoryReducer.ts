@@ -21,12 +21,13 @@ const inventorySlice = createSlice({
         return item;
       });
     },
-    deleteShoppingListItem(state, action: PayloadAction<InventoryItemType>) {
+    deleteInventoryItem(state, action: PayloadAction<InventoryItemType>) {
       return state.filter((item) => item.id !== action.payload.id);
     },
   },
 });
 
 export const { updateInventoryItem } = inventorySlice.actions;
+export const { deleteInventoryItem } = inventorySlice.actions;
 
 export default inventorySlice.reducer;

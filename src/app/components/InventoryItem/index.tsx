@@ -8,7 +8,10 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateInventoryItem } from '../../reducers/inventoryReducer';
+import {
+  deleteInventoryItem,
+  updateInventoryItem,
+} from '../../reducers/inventoryReducer';
 import './index.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
@@ -53,6 +56,14 @@ export default (props: Props): JSX.Element => {
       })
     );
   };
+
+  const handleDelete = () => {
+    dispatch(
+      deleteInventoryItem({
+        ...props.item,
+      })
+    );
+  };
   return (
     <ListItem>
       <ListItemIcon>
@@ -78,7 +89,7 @@ export default (props: Props): JSX.Element => {
             <IconButton onClick={handleClick} aria-label="done" color="primary">
               <DoneIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleDelete}>
               <DeleteIcon color="primary" />
             </IconButton>
           </>
