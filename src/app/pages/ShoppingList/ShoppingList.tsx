@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { List, Typography, AppBar, CssBaseline } from '@mui/material';
+import { List, CssBaseline } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ListForm from '../../components/ListForm';
 import ShoppingListItem from '../../components/ShoppingListItem';
 import Footer from '../../components/Footer';
 import type { RootState } from '../../store';
-import './index.css';
 import Close from '@mui/icons-material/Close';
 import Add from '@mui/icons-material/Add';
+import Header from '../../components/Header';
 
 export default (): JSX.Element => {
   const [editing, setEditing] = useState<boolean>(false);
@@ -20,17 +20,7 @@ export default (): JSX.Element => {
     <>
       <CssBaseline />
 
-      <AppBar className="header">
-        <Typography
-          variant="h4"
-          sx={{
-            textAlign: 'center',
-            mt: 1,
-          }}
-        >
-          Shopping List
-        </Typography>
-      </AppBar>
+      <Header children="Shopping List" />
 
       <List sx={{ pt: 7 }}>
         {[...shoppingListItems]
