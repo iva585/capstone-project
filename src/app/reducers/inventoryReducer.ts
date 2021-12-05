@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { InventoryItemType } from '../components/InventoryItem';
-
-const initialState: InventoryItemType[] = [
-  { id: 1, title: 'salad', checked: false },
-  { id: 2, title: 'tuna', checked: true },
-  { id: 3, title: 'cottage cheese', checked: false },
-  { id: 4, title: 'apples', checked: false },
-];
+import {
+  addInventoryItemToStorage,
+  getAllInventoryItemsFromStorage,
+  removeInventoryItemFromStorage,
+  updateInventoryItemInStorage,
+} from '../api/storage/inventory';
 
 const inventorySlice = createSlice({
   name: 'Inventory',
-  initialState,
+  initialState: getAllInventoryItemsFromStorage(),
   reducers: {
     updateInventoryItem(state, action: PayloadAction<InventoryItemType>) {
+      updateInventoryItemInStorage(action.payload);
       return [...state].map((item) => {
         if (item.id === action.payload.id) {
           return action.payload;
@@ -22,25 +22,12 @@ const inventorySlice = createSlice({
       });
     },
     deleteInventoryItem(state, action: PayloadAction<InventoryItemType>) {
+      removeInventoryItemFromStorage(action.payload.id);
       return state.filter((item) => item.id !== action.payload.id);
     },
 
     addInventoryItem(state, action: PayloadAction<InventoryItemType['title']>) {
-      const sortedbyIds = [...state].sort((a, b) => a.id - b.id);
-
-      const lastElement = sortedbyIds.pop();
-
-      const id: InventoryItemType['id'] = lastElement?.id
-        ? lastElement.id + 1
-        : 1;
-
-      const newItem: InventoryItemType = {
-        id,
-        title: action.payload,
-        checked: false,
-      };
-
-      return [...state, newItem];
+      return [...state, addInventoryItemToStorage(action.payload)];
     },
   },
 });
