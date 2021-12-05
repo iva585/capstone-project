@@ -15,6 +15,7 @@ import {
   deleteShoppingListItem,
   updateShoppingListItem,
 } from '../../reducers/shoppingListReducer';
+import { addInventoryItem } from '../../reducers/inventoryReducer';
 
 type ShoppingListItemType = {
   id: number;
@@ -54,7 +55,7 @@ export default (props: Props): JSX.Element => {
         ...props.item,
         checked,
       })
-    );
+    ) && dispatch(addInventoryItem(props.item.title));
   };
 
   const handleDelete = () => {
