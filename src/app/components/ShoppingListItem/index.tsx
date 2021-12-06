@@ -55,7 +55,8 @@ export default (props: Props): JSX.Element => {
         ...props.item,
         checked,
       })
-    ) && dispatch(addInventoryItem(props.item.title));
+    );
+    handleChecked();
   };
 
   const handleDelete = () => {
@@ -64,6 +65,11 @@ export default (props: Props): JSX.Element => {
         ...props.item,
       })
     );
+  };
+
+  const handleChecked = () => {
+    props.item.checked === false &&
+      dispatch(addInventoryItem(props.item.title));
   };
 
   return (
