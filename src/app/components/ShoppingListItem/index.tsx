@@ -46,6 +46,11 @@ export default (props: Props): JSX.Element => {
     );
   };
 
+  const handleChecked = () => {
+    props.item.checked === false &&
+      dispatch(addInventoryItem(props.item.title));
+  };
+
   const handleCheck = (
     _: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
@@ -55,7 +60,8 @@ export default (props: Props): JSX.Element => {
         ...props.item,
         checked,
       })
-    ) && dispatch(addInventoryItem(props.item.title));
+    );
+    handleChecked();
   };
 
   const handleDelete = () => {

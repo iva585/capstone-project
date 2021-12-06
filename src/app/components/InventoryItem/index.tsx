@@ -67,8 +67,14 @@ export default (props: Props): JSX.Element => {
     );
   };
 
-  const handleAdd = () => {
+  const handleAddToShoppingList = () => {
     dispatch(addShoppingListItem(props.item.title));
+    alert('Added to Shopping List!');
+  };
+
+  const handleAddToShoppingListAndDelete = () => {
+    handleAddToShoppingList();
+    handleDelete();
   };
 
   return (
@@ -99,6 +105,9 @@ export default (props: Props): JSX.Element => {
             <IconButton onClick={handleDelete}>
               <DeleteIcon color="primary" />
             </IconButton>
+            <IconButton onClick={handleAddToShoppingList}>
+              <Add />
+            </IconButton>
           </>
         ) : (
           <span onClick={handleClick}>
@@ -110,7 +119,7 @@ export default (props: Props): JSX.Element => {
           </span>
         )}
         {props.item.checked ? (
-          <IconButton onClick={handleAdd}>
+          <IconButton onClick={handleAddToShoppingListAndDelete}>
             <Add />
           </IconButton>
         ) : (
