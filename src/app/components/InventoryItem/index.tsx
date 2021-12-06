@@ -15,6 +15,7 @@ import {
 import './index.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
+import Add from '@mui/icons-material/Add';
 
 type InventoryItemType = {
   id: number;
@@ -64,6 +65,7 @@ export default (props: Props): JSX.Element => {
       })
     );
   };
+
   return (
     <ListItem>
       <ListItemIcon>
@@ -101,6 +103,13 @@ export default (props: Props): JSX.Element => {
               props.item.title
             )}
           </span>
+        )}
+        {props.item.checked ? (
+          <IconButton>
+            <Add />
+          </IconButton>
+        ) : (
+          ''
         )}
       </ListItemText>
     </ListItem>
