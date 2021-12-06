@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { ShoppingListItemType } from '../components/ShoppingListItem';
-
-const initialState: ShoppingListItemType[] = [
-  { id: 1, title: 'milk', checked: false },
-  { id: 2, title: 'oatmeal', checked: false },
-  { id: 3, title: 'chocolate', checked: true },
-  { id: 4, title: 'bananas', checked: false },
-];
+import {
+  addShoppingListItemToStorage,
+  removeShoppingListItemFromStorage,
+  updateShoppingListItemInStorage,
+} from '../api/storage/shoppingList';
+import { getAllShoppingListItemsFromStorage } from '../api/storage/shoppingList';
 
 const shoppingListSlice = createSlice({
   name: 'shoppingList',
-  initialState,
+  initialState: getAllShoppingListItemsFromStorage(),
   reducers: {
     updateShoppingListItem(state, action: PayloadAction<ShoppingListItemType>) {
+      updateShoppingListItemInStorage(action.payload);
       return [...state].map((item) => {
         if (item.id === action.payload.id) {
           return action.payload;
@@ -22,6 +22,7 @@ const shoppingListSlice = createSlice({
       });
     },
     deleteShoppingListItem(state, action: PayloadAction<ShoppingListItemType>) {
+      removeShoppingListItemFromStorage(action.payload.id);
       return state.filter((item) => item.id !== action.payload.id);
     },
 
@@ -29,21 +30,7 @@ const shoppingListSlice = createSlice({
       state,
       action: PayloadAction<ShoppingListItemType['title']>
     ) {
-      const sortedbyIds = [...state].sort((a, b) => a.id - b.id);
-
-      const lastElement = sortedbyIds.pop();
-
-      const id: ShoppingListItemType['id'] = lastElement?.id
-        ? lastElement.id + 1
-        : 1;
-
-      const newItem: ShoppingListItemType = {
-        id,
-        title: action.payload,
-        checked: false,
-      };
-
-      return [...state, newItem];
+      return [...state, addShoppingListItemToStorage(action.payload)];
     },
   },
 });

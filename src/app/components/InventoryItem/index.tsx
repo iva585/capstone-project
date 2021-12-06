@@ -15,6 +15,8 @@ import {
 import './index.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
+import Add from '@mui/icons-material/Add';
+import { addShoppingListItem } from '../../reducers/shoppingListReducer';
 
 type InventoryItemType = {
   id: number;
@@ -64,6 +66,11 @@ export default (props: Props): JSX.Element => {
       })
     );
   };
+
+  const handleAdd = () => {
+    dispatch(addShoppingListItem(props.item.title));
+  };
+
   return (
     <ListItem>
       <ListItemIcon>
@@ -101,6 +108,13 @@ export default (props: Props): JSX.Element => {
               props.item.title
             )}
           </span>
+        )}
+        {props.item.checked ? (
+          <IconButton onClick={handleAdd}>
+            <Add />
+          </IconButton>
+        ) : (
+          ''
         )}
       </ListItemText>
     </ListItem>
