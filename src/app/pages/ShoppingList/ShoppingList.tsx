@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import type { RootState } from '../../store';
 import Close from '@mui/icons-material/Close';
 import Add from '@mui/icons-material/Add';
-import Header from '../../components/Header';
+import Header from '../../components/Headers/HeaderDefault';
 import { addShoppingListItem } from '../../reducers/shoppingListReducer';
 
 export default (): JSX.Element => {
