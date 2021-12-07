@@ -2,3 +2,11 @@
   height: 55px;
   margin-bottom: 20px;
 }
+
+.image-header {
+  display: block;
+  margin-top: -150px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
