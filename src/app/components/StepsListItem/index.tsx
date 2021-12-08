@@ -14,8 +14,11 @@ type Props = {
 export default (props: Props): JSX.Element => {
   return (
     <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Typography variant="h6" sx={{ alignSelf: 'start' }}>
-        STEP {props.item.step}
+      <Typography
+        variant="h6"
+        sx={{ alignSelf: 'start', textTransform: 'uppercase' }}
+      >
+        step {props.item.step}
       </Typography>
       <Typography variant="body1" sx={{ fontWeight: 'light' }}>
         {props.item.description}

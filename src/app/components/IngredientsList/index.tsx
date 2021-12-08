@@ -20,8 +20,11 @@ export default () => {
           mt: '5px',
         }}
       >
-        <Typography variant="h6" sx={{ alignSelf: 'start', pl: 1.5 }}>
-          INGREDIENTS
+        <Typography
+          variant="h6"
+          sx={{ alignSelf: 'start', pl: 1.5, textTransform: 'uppercase' }}
+        >
+          ingredients
         </Typography>
         {initialState.map((item) => (
           <IngredientListItem key={item.id} item={item} />
