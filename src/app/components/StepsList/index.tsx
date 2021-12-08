@@ -25,7 +25,7 @@ const initialState = [
 
 export default (): JSX.Element => {
   return (
-    <List>
+    <List sx={{ mt: '10px' }}>
       {initialState.map((item) => (
         <StepsListItem key={item.id} item={item} />
       ))}
