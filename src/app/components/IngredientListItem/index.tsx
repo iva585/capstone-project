@@ -1,4 +1,3 @@
-import Add from '@mui/icons-material/Add';
 import {
   Divider,
   IconButton,
@@ -9,6 +8,7 @@ import {
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addShoppingListItem } from '../../reducers/shoppingListReducer';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
 type IngredientItemType = {
   id: number;
@@ -37,7 +37,7 @@ export default (props: Props): JSX.Element => {
         edge="end"
         aria-label="add to shopping list"
       >
-        <Add />
+        <AddShoppingCartOutlinedIcon />
       </IconButton>
     </ListItem>
   );
