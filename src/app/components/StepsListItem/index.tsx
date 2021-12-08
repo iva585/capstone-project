@@ -11,18 +11,16 @@ type Props = {
   item: StepItemType;
 };
 
-export default (props: Props): JSX.Element => {
-  return (
-    <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Typography
-        variant="h6"
-        sx={{ alignSelf: 'start', textTransform: 'uppercase' }}
-      >
-        step {props.item.step}
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 'light' }}>
-        {props.item.description}
-      </Typography>
-    </ListItem>
-  );
-};
+export default (props: Props): JSX.Element => (
+  <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Typography
+      variant="h6"
+      sx={{ alignSelf: 'start', textTransform: 'uppercase' }}
+    >
+      step {props.item.step}
+    </Typography>
+    <Typography variant="body1" sx={{ fontWeight: 'light' }}>
+      {props.item.description}
+    </Typography>
+  </ListItem>
+);
