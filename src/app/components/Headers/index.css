@@ -1,0 +1,12 @@
+.header {
+  height: 55px;
+  margin-bottom: 20px;
+}
+
+.image-header {
+  display: block;
+  margin-top: -8em;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
