@@ -16,7 +16,6 @@ export default () => {
         maxWidth: 360,
         bgcolor: 'background.paper',
         mt: '5px',
-        pr: '100px',
       }}
     >
       {initialState.map((item) => (
