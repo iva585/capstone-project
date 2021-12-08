@@ -1,4 +1,4 @@
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, Divider } from '@mui/material';
 import React from 'react';
 import Header from '../../components/Headers/HeaderRecipeDetail';
 import StepsList from '../../components/StepsList';
@@ -10,6 +10,7 @@ export default (): JSX.Element => {
       <CssBaseline />
       <Header />
       <IngredientsList />
+      <Divider variant="middle" />
       <StepsList />
     </>
   );
