@@ -1,6 +1,7 @@
 import React from 'react';
 import List from '@mui/material/List/List';
 import IngredientListItem from '../IngredientListItem';
+import { Typography } from '@mui/material';
 
 const initialState = [
   { id: 1, amount: '300g', title: 'pasta' },
@@ -10,17 +11,22 @@ const initialState = [
 
 export default () => {
   return (
-    <List
-      sx={{
-        width: '100%',
-        maxWidth: 360,
-        bgcolor: 'background.paper',
-        mt: '5px',
-      }}
-    >
-      {initialState.map((item) => (
-        <IngredientListItem key={item.id} item={item} />
-      ))}
-    </List>
+    <>
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+          mt: '5px',
+        }}
+      >
+        <Typography variant="h6" sx={{ alignSelf: 'start', pl: 1.5 }}>
+          INGREDIENTS
+        </Typography>
+        {initialState.map((item) => (
+          <IngredientListItem key={item.id} item={item} />
+        ))}
+      </List>
+    </>
   );
 };
