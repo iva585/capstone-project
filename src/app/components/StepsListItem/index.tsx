@@ -1,15 +1,24 @@
 import { ListItem, Typography } from '@mui/material';
 import React from 'react';
 
-export default (): JSX.Element => {
+export type StepItemType = {
+  id: number;
+  step: number;
+  description: string;
+};
+
+type Props = {
+  item: StepItemType;
+};
+
+export default (props: Props): JSX.Element => {
   return (
     <ListItem sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Typography variant="h6">STEP 1</Typography>
-      <Typography variant="body1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa iusto
-        architecto temporibus cupiditate incidunt voluptatum non voluptatibus
-        inventore vel corrupti enim neque at deserunt magnam itaque provident,
-        necessitatibus qui fugit!
+      <Typography variant="h6" sx={{ alignSelf: 'start' }}>
+        STEP {props.item.step}
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 'light' }}>
+        {props.item.description}
       </Typography>
     </ListItem>
   );
