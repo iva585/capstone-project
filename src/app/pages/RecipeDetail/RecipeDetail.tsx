@@ -19,6 +19,7 @@ export default (): JSX.Element => {
         <IngredientsList />
         <Divider variant="middle" />
         <StepsList />
+        <Divider variant="middle" />
         <TagList />
       </main>
       <Footer
