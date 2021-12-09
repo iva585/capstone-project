@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import './index.css';
+import TagList from '../../components/TagList/TagList';
 
 export default (): JSX.Element => {
   const [editing, setEditing] = useState<boolean>(false);
@@ -18,6 +19,7 @@ export default (): JSX.Element => {
         <IngredientsList />
         <Divider variant="middle" />
         <StepsList />
+        <TagList />
       </main>
       <Footer
         actionButtonIcon={editing ? <DoneOutlinedIcon /> : <EditOutlinedIcon />}
