@@ -20,6 +20,7 @@ export default (): JSX.Element => {
         <Divider variant="middle" />
         <StepsList />
         <Divider variant="middle" />
+        <Divider variant="middle" />
         <TagList />
       </main>
       <Footer
