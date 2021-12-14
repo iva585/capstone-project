@@ -5,7 +5,6 @@ export default (): JSX.Element => {
   return (
     <Card
       sx={{
-        mt: -7,
         alignSelf: 'center',
         width: '70%',
         p: 0,
@@ -19,9 +18,9 @@ export default (): JSX.Element => {
           alignItems: 'center',
         }}
       >
-        <Input placeholder="Add Recipe Title Here!" />
+        <Input placeholder="Add Recipe Title Here" />
 
-        <Input placeholder="Write what ou ove about this recipe here!" />
+        <Input placeholder="Add Description Here" />
       </CardContent>
     </Card>
   );
