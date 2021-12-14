@@ -9,7 +9,17 @@ import {
 } from '@mui/material';
 import React from 'react';
 
-export default (): JSX.Element => {
+export type StepItemType = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+type Props = {
+  item: StepItemType;
+};
+
+export default (props: Props): JSX.Element => {
   return (
     <ListItem>
       <Card>
@@ -27,12 +37,10 @@ export default (): JSX.Element => {
         </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Something tasty
+            {props.item.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ab
-            voluptates cumque delectus rerum quam unde fugiat facere corrupti
-            dolor magni.
+            {props.item.description}
           </Typography>
         </CardContent>
 
