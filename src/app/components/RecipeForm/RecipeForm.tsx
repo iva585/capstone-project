@@ -82,7 +82,6 @@ export default (): JSX.Element => {
           display: 'flex',
           alignItems: 'center',
           width: '90%',
-          position: 'fixed',
           m: '12px',
         }}
       >
@@ -90,6 +89,28 @@ export default (): JSX.Element => {
           sx={{ ml: 1, flex: 1 }}
           placeholder="Add ingredient"
           inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
+        />
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
+          <AddIcon />
+        </IconButton>
+      </Paper>
+      <Divider variant="middle" />
+      <Paper
+        component="form"
+        sx={{
+          p: '2px 4px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '90%',
+          m: '12px',
+        }}
+      >
+        <InputBase
+          multiline
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Add step"
+          inputProps={{ 'aria-label': 'add step', maxLength: 500 }}
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
