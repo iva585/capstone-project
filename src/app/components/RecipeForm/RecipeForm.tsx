@@ -11,6 +11,7 @@ import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 
 export default (): JSX.Element => {
   return (
+    //@TODO: Replace placeholder with file upload
     <Box
       sx={{
         display: 'flex',
@@ -54,9 +55,18 @@ export default (): JSX.Element => {
             alignItems: 'center',
           }}
         >
-          <Input placeholder="Add Recipe Title Here" />
+          <Input
+            placeholder="Add Recipe Title Here"
+            inputProps={{ 'aria-label': 'add recipe title', maxLength: 30 }}
+          />
 
-          <Input placeholder="Add Description Here" />
+          <Input
+            placeholder="Add Description Here"
+            inputProps={{
+              'aria-label': 'add short description',
+              maxLength: 60,
+            }}
+          />
         </CardContent>
       </Card>
     </Box>
