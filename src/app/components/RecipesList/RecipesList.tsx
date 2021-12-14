@@ -4,7 +4,7 @@ import CardDefault from '../RecipeCards/CardDefault';
 
 export default (): JSX.Element => {
   return (
-    <List>
+    <List sx={{ display: 'flex', flexDirection: 'column', p: '7px' }}>
       <ListItem>
         <CardDefault />
       </ListItem>
