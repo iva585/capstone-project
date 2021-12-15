@@ -5,10 +5,16 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default (): JSX.Element => {
   return (
-    <Card sx={{ display: 'flex' }}>
-      <Box sx={{ width: 151, height: 151, overflow: 'hidden' }}>
+    <Card
+      sx={{
+        display: 'flex',
+        width: '90%',
+        height: '11rem',
+        ml: '16px',
+      }}
+    >
+      <Box sx={{ overflow: 'hidden', alignSelf: 'center' }}>
         <img
-          className="image-header"
           src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
           alt="pesto pasta"
         />
@@ -19,7 +25,7 @@ export default (): JSX.Element => {
             Pesto Pasta
           </Typography>
           <Typography
-            variant="subtitle1"
+            variant="subtitle2"
             color="text.secondary"
             component="div"
           >
