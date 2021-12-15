@@ -15,6 +15,11 @@ type Props = {
 };
 
 export default (props: Props): JSX.Element => {
+  const truncateText = (text: string, characterCount: number) =>
+    text.length > characterCount
+      ? `${text.substr(0, characterCount - 1)}...`
+      : text;
+
   return (
     <Card
       sx={{
@@ -28,6 +33,7 @@ export default (props: Props): JSX.Element => {
         sx={{
           overflow: 'hidden',
           alignSelf: 'center',
+          maxWidth: '50%',
         }}
       >
         <img
@@ -46,14 +52,9 @@ export default (props: Props): JSX.Element => {
             color="text.secondary"
             component="div"
           >
-            {props.item.description}
+            {truncateText(props.item.description, 60)}
           </Typography>
         </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="see more">
-            <ArrowForwardIosIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-        </Box>
       </Box>
     </Card>
   );
