@@ -12,12 +12,12 @@ export default (): JSX.Element => {
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
   return (
     <>
-      <HeaderRecipes />
       <main className="padding">
         {newRecipe ? (
           <RecipeForm />
         ) : (
           <>
+            <HeaderRecipes />
             <StarredRecipesList />
             <RecipesList />
           </>
