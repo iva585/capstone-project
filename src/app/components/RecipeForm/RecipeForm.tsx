@@ -90,6 +90,7 @@ export default (): JSX.Element => {
           placeholder="Add amount"
           inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
         />
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Add ingredient"
