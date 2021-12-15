@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 type Props = {
   onAdd: (inputValue: string) => void;
   placeholder?: string;
+  maxLength?: number;
 };
 
 const initialState = '';
@@ -34,7 +35,7 @@ export default (props: Props): JSX.Element => {
         multiline
         sx={{ ml: 1, flex: 1 }}
         placeholder={placeholder}
-        inputProps={{ 'aria-label': placeholder, maxLength: 20 }}
+        inputProps={{ 'aria-label': placeholder, maxLength: props.maxLength }}
         value={currentValue}
         onChange={(event) => setCurrentValue(event.target.value)}
       />

@@ -7,16 +7,16 @@ import {
   IconButton,
   ImageListItemBar,
   Input,
-  InputBase,
-  Paper,
 } from '@mui/material';
 import React, { useState } from 'react';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
-import AddIcon from '@mui/icons-material/Add';
 import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
 import TagList from '../TagList/TagList';
 import AddTextItem from './AddTextItem';
 import StepsList from '../StepsList';
+import AddIngredient from './AddIngredient';
+import { RecipeIngredient } from '../IngredientListItem';
+import IngredientsList from '../IngredientsList';
 
 const initialData: Omit<Recipe, 'id'> = {
   title: '',
@@ -45,6 +45,13 @@ export default (): JSX.Element => {
           description,
         },
       ],
+    });
+  };
+
+  const addIngredient = (ingredient: RecipeIngredient) => {
+    setRecipeData({
+      ...recipeData,
+      ingredients: [...recipeData.ingredients, ingredient],
     });
   };
 
@@ -130,37 +137,15 @@ export default (): JSX.Element => {
           </CardContent>
         </Card>
       </Box>
-      <Paper
-        component="form"
-        sx={{
-          p: '2px 4px',
-          display: 'flex',
-          alignItems: 'center',
-          width: '90%',
-          m: '12px',
-        }}
-      >
-        <InputBase
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Add amount"
-          inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
-        />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <InputBase
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Add ingredient"
-          inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
-        />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
-          <AddIcon />
-        </IconButton>
-      </Paper>
+      <AddIngredient onAdd={addIngredient} />
       <Divider variant="middle" />
-      <AddTextItem onAdd={addStep} placeholder="Add step" />
+      <AddTextItem onAdd={addStep} placeholder="Add step" maxLength={500} />
       <Divider variant="middle" />
-      <AddTextItem onAdd={addTag} placeholder="Add tag" />
+      <AddTextItem onAdd={addTag} placeholder="Add tag" maxLength={20} />
       <Box>
+        {recipeData.ingredients.length > 0 && (
+          <IngredientsList ingredients={recipeData.ingredients} />
+        )}
         <StepsList steps={recipeData.steps} />
         <TagList tags={recipeData.tags} />
       </Box>
