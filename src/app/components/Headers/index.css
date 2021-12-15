@@ -3,6 +3,12 @@
   margin-bottom: 20px;
 }
 
+.header-flex {
+  display: flex;
+  height: 55px;
+  margin-bottom: 20px;
+}
+
 .image-header {
   display: block;
   margin-top: -8em;
