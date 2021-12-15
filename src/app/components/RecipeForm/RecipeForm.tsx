@@ -71,8 +71,6 @@ export default (): JSX.Element => {
     });
   };
 
-  console.log(recipeData);
-
   return (
     <>
       <Box
