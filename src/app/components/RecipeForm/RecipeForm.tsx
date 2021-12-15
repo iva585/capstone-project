@@ -10,11 +10,31 @@ import {
   InputBase,
   Paper,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import AddIcon from '@mui/icons-material/Add';
+import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
+import TagList from '../TagList/TagList';
+import AddTag from './AddTag';
+
+const initialData: Omit<Recipe, 'id'> = {
+  title: '',
+  description: '',
+  ingredients: [],
+  steps: [],
+  tags: [],
+};
 
 export default (): JSX.Element => {
+  const [recipeData, setRecipeData] = useState<Omit<Recipe, 'id'>>(initialData);
+
+  const addTag = (tagName: string) => {
+    setRecipeData({
+      ...recipeData,
+      tags: [...recipeData.tags, tagName],
+    });
+  };
+
   return (
     <>
       <Box
@@ -63,6 +83,7 @@ export default (): JSX.Element => {
             <Input
               placeholder="Add Recipe Title Here"
               inputProps={{ 'aria-label': 'add recipe title', maxLength: 30 }}
+              value={recipeData.title}
             />
 
             <Input
@@ -71,6 +92,7 @@ export default (): JSX.Element => {
                 'aria-label': 'add short description',
                 maxLength: 60,
               }}
+              value={recipeData.description}
             />
           </CardContent>
         </Card>
@@ -124,27 +146,10 @@ export default (): JSX.Element => {
         </IconButton>
       </Paper>
       <Divider variant="middle" />
-      <Paper
-        component="form"
-        sx={{
-          p: '2px 4px',
-          display: 'flex',
-          alignItems: 'center',
-          width: '90%',
-          m: '12px',
-        }}
-      >
-        <InputBase
-          multiline
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Add tag"
-          inputProps={{ 'aria-label': 'add tag', maxLength: 20 }}
-        />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
-          <AddIcon />
-        </IconButton>
-      </Paper>
+      <AddTag onAdd={addTag} />
+      <Box>
+        <TagList tags={recipeData.tags} />
+      </Box>
       <Box sx={{ p: 2 }}>
         <Button variant="outlined" color="error">
           Cancel
