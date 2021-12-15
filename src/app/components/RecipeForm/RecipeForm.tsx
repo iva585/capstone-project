@@ -35,6 +35,24 @@ export default (): JSX.Element => {
     });
   };
 
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRecipeData({
+      ...recipeData,
+      title: event.target.value,
+    });
+  };
+
+  const handleDescriptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRecipeData({
+      ...recipeData,
+      description: event.target.value,
+    });
+  };
+
+  console.log(recipeData);
+
   return (
     <>
       <Box
@@ -84,6 +102,7 @@ export default (): JSX.Element => {
               placeholder="Add Recipe Title Here"
               inputProps={{ 'aria-label': 'add recipe title', maxLength: 30 }}
               value={recipeData.title}
+              onChange={handleTitleChange}
             />
 
             <Input
@@ -93,6 +112,7 @@ export default (): JSX.Element => {
                 maxLength: 60,
               }}
               value={recipeData.description}
+              onChange={handleDescriptionChange}
             />
           </CardContent>
         </Card>
