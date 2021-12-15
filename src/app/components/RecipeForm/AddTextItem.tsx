@@ -3,7 +3,8 @@ import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from 'react';
 
 type Props = {
-  onAdd: (tagName: string) => void;
+  onAdd: (inputValue: string) => void;
+  placeholder?: string;
 };
 
 const initialState = '';
@@ -15,6 +16,8 @@ export default (props: Props): JSX.Element => {
     props.onAdd(currentValue);
     setCurrentValue(initialState);
   };
+
+  const placeholder = props.placeholder ?? 'Add';
 
   return (
     <Paper
@@ -30,8 +33,8 @@ export default (props: Props): JSX.Element => {
       <InputBase
         multiline
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Add tag"
-        inputProps={{ 'aria-label': 'add tag', maxLength: 20 }}
+        placeholder={placeholder}
+        inputProps={{ 'aria-label': placeholder, maxLength: 20 }}
         value={currentValue}
         onChange={(event) => setCurrentValue(event.target.value)}
       />

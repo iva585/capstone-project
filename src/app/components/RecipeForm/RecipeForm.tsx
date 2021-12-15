@@ -15,7 +15,8 @@ import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import AddIcon from '@mui/icons-material/Add';
 import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
 import TagList from '../TagList/TagList';
-import AddTag from './AddTag';
+import AddTextItem from './AddTextItem';
+import StepsList from '../StepsList';
 
 const initialData: Omit<Recipe, 'id'> = {
   title: '',
@@ -32,6 +33,18 @@ export default (): JSX.Element => {
     setRecipeData({
       ...recipeData,
       tags: [...recipeData.tags, tagName],
+    });
+  };
+
+  const addStep = (description: string) => {
+    setRecipeData({
+      ...recipeData,
+      steps: [
+        ...recipeData.steps,
+        {
+          description,
+        },
+      ],
     });
   };
 
@@ -144,30 +157,11 @@ export default (): JSX.Element => {
         </IconButton>
       </Paper>
       <Divider variant="middle" />
-      <Paper
-        component="form"
-        sx={{
-          p: '2px 4px',
-          display: 'flex',
-          alignItems: 'center',
-          width: '90%',
-          m: '12px',
-        }}
-      >
-        <InputBase
-          multiline
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Add step"
-          inputProps={{ 'aria-label': 'add step', maxLength: 500 }}
-        />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <IconButton color="primary" sx={{ p: '10px' }} aria-label="add">
-          <AddIcon />
-        </IconButton>
-      </Paper>
+      <AddTextItem onAdd={addStep} placeholder="Add step" />
       <Divider variant="middle" />
-      <AddTag onAdd={addTag} />
+      <AddTextItem onAdd={addTag} placeholder="Add tag" />
       <Box>
+        <StepsList steps={recipeData.steps} />
         <TagList tags={recipeData.tags} />
       </Box>
       <Box sx={{ p: 2 }}>
