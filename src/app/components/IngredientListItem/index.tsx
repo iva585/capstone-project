@@ -10,14 +10,13 @@ import { useDispatch } from 'react-redux';
 import { addShoppingListItem } from '../../reducers/shoppingListReducer';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
-type IngredientItemType = {
-  id: number;
+export type RecipeIngredient = {
   amount: string;
   title: string;
 };
 
 type Props = {
-  item: IngredientItemType;
+  item: RecipeIngredient;
 };
 
 export default (props: Props): JSX.Element => {
@@ -26,6 +25,7 @@ export default (props: Props): JSX.Element => {
     dispatch(addShoppingListItem(props.item.title));
     alert('Added to Shopping List!');
   };
+
   return (
     <ListItem>
       <Typography>{props.item.amount}</Typography>

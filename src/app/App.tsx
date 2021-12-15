@@ -11,7 +11,7 @@ export default (): JSX.Element => (
       <Route path="/" element={<Recipes />} />
       <Route path="/shopping-list" element={<ShoppingList />} />
       <Route path="/inventory" element={<Inventory />} />
-      <Route path="/1" element={<RecipeDetail />} />
+      <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
     </Routes>
   </BrowserRouter>
 );

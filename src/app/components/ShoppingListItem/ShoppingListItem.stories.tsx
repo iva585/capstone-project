@@ -15,7 +15,7 @@ const exampleItemDefault = {
 };
 
 const exampleItemChecked = {
-  id: 1,
+  id: 2,
   title: 'bread',
   checked: true,
 };
