@@ -1,3 +1,4 @@
+import './index.css';
 import { Card, CardContent, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
@@ -18,20 +19,26 @@ export default (props: Props): JSX.Element => {
     <Card
       sx={{
         display: 'flex',
-        width: '90%',
+        minWidth: '320px',
         height: '11rem',
-        ml: '16px',
+        ml: '7px',
       }}
     >
-      <Box sx={{ overflow: 'hidden', alignSelf: 'center' }}>
+      <Box
+        sx={{
+          overflow: 'hidden',
+          alignSelf: 'center',
+        }}
+      >
         <img
+          className="image-responsive"
           src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
           alt="pesto pasta"
         />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
+          <Typography component="div" variant="h6">
             {props.item.title}
           </Typography>
           <Typography
