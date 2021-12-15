@@ -12,7 +12,7 @@ import { useParams } from 'react-router';
 import type { RecipeIngredient } from '../../components/IngredientListItem';
 import type { RecipeStep } from '../../components/StepsListItem';
 
-type Recipe = {
+export type Recipe = {
   id: number;
   title: string;
   description: string;

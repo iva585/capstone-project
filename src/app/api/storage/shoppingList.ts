@@ -4,7 +4,7 @@ const LOCAL_STORAGE_KEY = 'shopping-list';
 
 const getAllShoppingListItemsFromStorage = (): ShoppingListItemType[] => {
   const ShoppingListItems: string | null =
-    localStorage.getItem('shopping-list');
+    localStorage.getItem(LOCAL_STORAGE_KEY);
 
   return ShoppingListItems ? JSON.parse(ShoppingListItems) : [];
 };
