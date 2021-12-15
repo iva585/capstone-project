@@ -3,7 +3,17 @@ import { Box } from '@mui/system';
 import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export default (): JSX.Element => {
+export type StepItemType = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+type Props = {
+  item: StepItemType;
+};
+
+export default (props: Props): JSX.Element => {
   return (
     <Card
       sx={{
@@ -22,15 +32,14 @@ export default (): JSX.Element => {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
-            Pesto Pasta
+            {props.item.title}
           </Typography>
           <Typography
             variant="subtitle2"
             color="text.secondary"
             component="div"
           >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-            recusandae culpa delectus officia impedit magnam.
+            {props.item.description}
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
