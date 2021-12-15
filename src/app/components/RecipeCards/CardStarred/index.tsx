@@ -1,8 +1,7 @@
 import './index.css';
-import { Card, CardContent, IconButton, Typography } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export type StepItemType = {
   id: number;
@@ -43,17 +42,21 @@ export default (props: Props): JSX.Element => {
         />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h6">
-            {props.item.title}
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            color="text.secondary"
-            component="div"
-          >
-            {truncateText(props.item.description, 60)}
-          </Typography>
+        <CardContent sx={{ flex: '1 0 auto', height: '100%' }}>
+          <Box sx={{ height: '30%', overflow: 'hidden' }}>
+            <Typography component="div" variant="h6">
+              {truncateText(props.item.title, 12)}
+            </Typography>
+          </Box>
+          <Box sx={{ height: '70%' }}>
+            <Typography
+              variant="subtitle2"
+              color="text.secondary"
+              component="div"
+            >
+              {truncateText(props.item.description, 60)}
+            </Typography>
+          </Box>
         </CardContent>
       </Box>
     </Card>
