@@ -87,6 +87,11 @@ export default (): JSX.Element => {
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
+          placeholder="Add amount"
+          inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
+        />
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
           placeholder="Add ingredient"
           inputProps={{ 'aria-label': 'add ingredient', maxLength: 50 }}
         />
