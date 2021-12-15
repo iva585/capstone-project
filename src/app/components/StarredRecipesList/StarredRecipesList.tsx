@@ -36,7 +36,7 @@ export default (): JSX.Element => {
         variant="h6"
         sx={{
           alignSelf: 'start',
-          pl: '16px',
+          pl: '22px',
           textTransform: 'uppercase',
         }}
       >
