@@ -15,7 +15,7 @@ import TagList from '../TagList/TagList';
 import AddTextItem from './AddTextItem';
 import StepsList from '../StepsList';
 import AddIngredient from './AddIngredient';
-import { RecipeIngredient } from '../IngredientListItem';
+import type { RecipeIngredient } from '../IngredientListItem';
 import IngredientsList from '../IngredientsList';
 
 const initialData: Omit<Recipe, 'id'> = {
