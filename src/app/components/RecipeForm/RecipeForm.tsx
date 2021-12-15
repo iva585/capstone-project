@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Divider,
@@ -145,6 +146,11 @@ export default (): JSX.Element => {
           <AddIcon />
         </IconButton>
       </Paper>
+      <Box sx={{ p: 2 }}>
+        <Button variant="outlined" color="error">
+          Cancel
+        </Button>
+      </Box>
     </>
   );
 };
