@@ -8,7 +8,7 @@ export default () => {
       <Paper
         sx={{
           display: 'flex',
-          width: '60%',
+          width: '250px',
           height: '2.2rem',
           alignSelf: 'center',
           verticalAlign: 'center',

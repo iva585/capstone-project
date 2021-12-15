@@ -5,6 +5,7 @@ import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import RecipesList from '../../components/RecipesList/RecipesList';
 import './index.css';
 import HeaderRecipes from '../../components/Headers/HeaderRecipes';
+import StarredRecipesList from '../../components/StarredRecipesList/StarredRecipesList';
 
 export default (): JSX.Element => {
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
@@ -12,6 +13,7 @@ export default (): JSX.Element => {
     <>
       <HeaderRecipes />
       <main className="padding">
+        <StarredRecipesList />
         <RecipesList />
       </main>
       <Footer
