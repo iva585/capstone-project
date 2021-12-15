@@ -16,7 +16,6 @@ import AddIcon from '@mui/icons-material/Add';
 
 export default (): JSX.Element => {
   return (
-    //@TODO: Replace placeholder with file upload
     <>
       <Box
         sx={{
