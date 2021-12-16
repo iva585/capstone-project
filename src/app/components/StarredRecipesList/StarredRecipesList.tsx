@@ -5,9 +5,8 @@ import CardStarred from '../RecipeCards/CardStarred';
 const initialState = [
   {
     id: 1,
-    title: 'Tasty Pasta',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ducimus reiciendis unde.',
+    title: 'Pesto Pasta',
+    description: 'Best served with a glass of Sauvignon Blanc!',
   },
   {
     id: 2,

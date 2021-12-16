@@ -31,7 +31,7 @@ export default (props: Props): JSX.Element => {
         >
           <img
             className="image-header"
-            src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
+            src="https://cdn.pickuplimes.com/cache/d6/03/d603ee859a939e049aa60507401ec2fe.jpg"
             alt="pesto pasta"
           />
         </Box>
