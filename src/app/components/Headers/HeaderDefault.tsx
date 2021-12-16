@@ -13,7 +13,11 @@ export default (props: Props): JSX.Element => {
   return (
     <AppBar
       className="header"
-      sx={{ display: 'flex', flexDirection: 'row', gap: '17px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '17px',
+      }}
     >
       <IconButton onClick={() => navigate('/')}>
         <HomeIcon fontSize="large" sx={{ alignSelf: 'flex-start' }} />

@@ -1,10 +1,12 @@
-import { lightGreen } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     mode: 'light',
-    primary: lightGreen,
+    primary: {
+      main: green[600],
+    },
   },
 });
 
