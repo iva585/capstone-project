@@ -3,7 +3,7 @@ import Close from '@mui/icons-material/Close';
 import { CssBaseline, List } from '@mui/material';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Footer from '../../components/Footer';
+import Footer from '../../components/Footers/FooterDefault';
 import Header from '../../components/Headers/HeaderDefault';
 import InventoryItem from '../../components/InventoryItem';
 import ListForm from '../../components/ListForm';
