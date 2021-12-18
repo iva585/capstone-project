@@ -17,13 +17,19 @@ export default (): JSX.Element => {
   const recipeFormData = useSelector((state: RootState) => state.recipeForm);
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
 
+  const resetForm = () => {
+    dispatch(resetFormState());
+  };
+
   const handleCancelForm = () => {
-    confirm("If you cancel your changes won't be saved") &&
+    if (confirm("If you cancel your changes won't be saved")) {
       setNewRecipe((newRecipe) => !newRecipe);
+      resetForm();
+    }
   };
   const handleSubmitForm = () => {
     dispatch(addRecipe(recipeFormData));
-    dispatch(resetFormState());
+    resetForm();
   };
 
   return (
