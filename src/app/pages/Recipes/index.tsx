@@ -18,7 +18,8 @@ export default (): JSX.Element => {
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
 
   const handleCancelForm = () => {
-    setNewRecipe((newRecipe) => !newRecipe);
+    confirm("If you cancel your changes won't be saved") &&
+      setNewRecipe((newRecipe) => !newRecipe);
   };
   const handleSubmitForm = () => {
     dispatch(addRecipe(recipeFormData));
