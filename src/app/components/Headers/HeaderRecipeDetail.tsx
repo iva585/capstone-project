@@ -9,8 +9,24 @@ import { Box } from '@mui/system';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import React from 'react';
 import './index.css';
+import type { RootState } from '../../store';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+
+type RecipeParams = 'recipeId';
 
 export default (): JSX.Element => {
+  const { recipeId } = useParams<RecipeParams>();
+
+  const recipe = useSelector((state: RootState) =>
+    state.recipes.find((recipe) => recipe.id === parseInt(recipeId ?? ''))
+  );
+
+  if (!recipe) {
+    //@TODO: Write 404 component
+    return <div>Recipe not found</div>;
+  }
+
   return (
     <Box
       sx={{
@@ -56,14 +72,14 @@ export default (): JSX.Element => {
           }}
         >
           <Typography gutterBottom variant="h5">
-            Pesto Pasta
+            {recipe.title}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
             sx={{ textAlign: 'center' }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit!
+            {recipe.description}
           </Typography>
         </CardContent>
       </Card>

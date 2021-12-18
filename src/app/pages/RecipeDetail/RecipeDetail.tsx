@@ -29,7 +29,6 @@ type RecipeParams = 'recipeId';
 export default (): JSX.Element => {
   const [editing, setEditing] = useState<boolean>(false);
   const { recipeId } = useParams<RecipeParams>();
-  console.log('recipeId: ', recipeId);
 
   const recipe = useSelector((state: RootState) =>
     state.recipes.find((recipe) => recipe.id === parseInt(recipeId ?? ''))
