@@ -19,6 +19,7 @@ export type Recipe = {
   ingredients: RecipeIngredient[];
   steps: RecipeStep[];
   tags: string[];
+  starred: boolean;
 };
 
 const mockRecipe: Recipe = {
@@ -54,6 +55,7 @@ const mockRecipe: Recipe = {
     'pasta',
     'italian',
   ],
+  starred: false,
 };
 
 type RecipeParams = 'recipeId';

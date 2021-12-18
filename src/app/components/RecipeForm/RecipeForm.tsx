@@ -8,7 +8,7 @@ import {
   ImageListItemBar,
   Input,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import TagList from '../TagList/TagList';
 import AddTextItem from './AddTextItem';
@@ -22,6 +22,7 @@ import {
 } from '../../reducers/recipeFormReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 
 type Props = {
   onCancel: () => void;
@@ -83,6 +84,14 @@ export default (props: Props): JSX.Element => {
     );
   };
 
+  const toggleStarred = () => {
+    dispatch(
+      updateRecipeFormData({
+        starred: !recipeData.starred,
+      })
+    );
+  };
+
   return (
     <>
       <Box
@@ -105,8 +114,12 @@ export default (props: Props): JSX.Element => {
             }}
             position="top"
             actionIcon={
-              <IconButton sx={{ color: 'white' }}>
-                <StarBorderRoundedIcon />
+              <IconButton onClick={toggleStarred} sx={{ color: 'white' }}>
+                {recipeData.starred ? (
+                  <StarRateRoundedIcon />
+                ) : (
+                  <StarBorderRoundedIcon />
+                )}
               </IconButton>
             }
             actionPosition="right"
