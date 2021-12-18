@@ -11,6 +11,8 @@ import TagList from '../../components/TagList/TagList';
 import { useParams } from 'react-router';
 import type { RecipeIngredient } from '../../components/IngredientListItem';
 import type { RecipeStep } from '../../components/StepsListItem';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store';
 
 export type Recipe = {
   id: number;
@@ -22,42 +24,6 @@ export type Recipe = {
   starred: boolean;
 };
 
-const mockRecipe: Recipe = {
-  id: 1,
-  title: 'Pasta pesto',
-  description: 'Lorem ipsum dolor sir amet',
-  ingredients: [
-    { amount: '300g', title: 'pasta' },
-    { amount: '100g', title: 'pesto' },
-    { amount: '30ml', title: 'olive oil' },
-  ],
-  steps: [
-    {
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ducimus reiciendis unde.',
-    },
-    {
-      description:
-        'Reprehenderit praesentium ipsa alias, sint, iure odit illo voluptate, quia cum distinctio qui adipisci',
-    },
-    {
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ut, nulla consectetur incidunt molestiae libero recusandae explicabo.',
-    },
-  ],
-  tags: [
-    'dinner',
-    'pasta',
-    'italian',
-    'dinner',
-    'pasta',
-    'italian',
-    'pasta',
-    'italian',
-  ],
-  starred: false,
-};
-
 type RecipeParams = 'recipeId';
 
 export default (): JSX.Element => {
@@ -65,7 +31,14 @@ export default (): JSX.Element => {
   const { recipeId } = useParams<RecipeParams>();
   console.log('recipeId: ', recipeId);
 
-  const recipe = mockRecipe;
+  const recipe = useSelector((state: RootState) =>
+    state.recipes.find((recipe) => recipe.id === parseInt(recipeId ?? ''))
+  );
+
+  if (!recipe) {
+    //@TODO: Write 404 component
+    return <div>Recipe not found</div>;
+  }
 
   return (
     <>
