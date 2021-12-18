@@ -8,8 +8,8 @@ export default () => {
       <Paper
         sx={{
           display: 'flex',
-          width: '250px',
-          height: '2.2rem',
+          width: '230px',
+          height: '2rem',
           alignSelf: 'center',
           verticalAlign: 'center',
           mt: 1.5,
@@ -21,7 +21,7 @@ export default () => {
           placeholder="Search for a recipe.."
           inputProps={{ 'aria-label': 'search' }}
         />
-        <SearchIcon sx={{ m: 1 }} />
+        <SearchIcon sx={{ mt: 0.7 }} />
       </Paper>
     </AppBar>
   );

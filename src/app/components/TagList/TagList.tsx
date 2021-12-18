@@ -2,18 +2,11 @@ import { List } from '@mui/material';
 import React from 'react';
 import Tag from '../Tag/Tag';
 
-const initialState = [
-  { id: 1, title: 'dinner' },
-  { id: 2, title: 'pasta' },
-  { id: 3, title: 'italian' },
-  { id: 4, title: 'dinner' },
-  { id: 5, title: 'pasta' },
-  { id: 6, title: 'italian' },
-  { id: 7, title: 'pasta' },
-  { id: 8, title: 'italian' },
-];
+type Props = {
+  tags: string[];
+};
 
-export default (): JSX.Element => {
+export default (props: Props): JSX.Element => {
   return (
     <List
       sx={{
@@ -25,8 +18,8 @@ export default (): JSX.Element => {
         columnGap: '7px',
       }}
     >
-      {initialState.map((tag) => (
-        <Tag key={tag.id} tag={tag} />
+      {props.tags.map((tag, index) => (
+        <Tag key={index} name={tag} />
       ))}
     </List>
   );

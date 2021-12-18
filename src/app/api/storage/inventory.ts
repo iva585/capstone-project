@@ -3,7 +3,7 @@ import type { InventoryItemType } from '../../components/InventoryItem';
 const LOCAL_STORAGE_KEY = 'inventory';
 
 const getAllInventoryItemsFromStorage = (): InventoryItemType[] => {
-  const inventoryItems: string | null = localStorage.getItem('inventory');
+  const inventoryItems: string | null = localStorage.getItem(LOCAL_STORAGE_KEY);
 
   return inventoryItems ? JSON.parse(inventoryItems) : [];
 };

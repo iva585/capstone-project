@@ -1,14 +1,13 @@
 import { ListItem, Typography } from '@mui/material';
 import React from 'react';
 
-export type StepItemType = {
-  id: number;
-  step: number;
+export type RecipeStep = {
   description: string;
 };
 
 type Props = {
-  item: StepItemType;
+  item: RecipeStep;
+  step: number;
 };
 
 export default (props: Props): JSX.Element => (
@@ -17,7 +16,7 @@ export default (props: Props): JSX.Element => (
       variant="h6"
       sx={{ alignSelf: 'start', textTransform: 'uppercase' }}
     >
-      step {props.item.step}
+      step {props.step}
     </Typography>
     <Typography variant="body1" sx={{ fontWeight: 'light' }}>
       {props.item.description}

@@ -6,15 +6,22 @@ import RecipesList from '../../components/RecipesList/RecipesList';
 import './index.css';
 import HeaderRecipes from '../../components/Headers/HeaderRecipes';
 import StarredRecipesList from '../../components/StarredRecipesList/StarredRecipesList';
+import RecipeForm from '../../components/RecipeForm/RecipeForm';
 
 export default (): JSX.Element => {
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
   return (
     <>
-      <HeaderRecipes />
       <main className="padding">
-        <StarredRecipesList />
-        <RecipesList />
+        {newRecipe ? (
+          <RecipeForm />
+        ) : (
+          <>
+            <HeaderRecipes />
+            <StarredRecipesList />
+            <RecipesList />
+          </>
+        )}
       </main>
       <Footer
         actionButtonIcon={

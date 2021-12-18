@@ -1,33 +1,17 @@
 import { List } from '@mui/material';
 import React from 'react';
 import StepsListItem from '../StepsListItem';
+import type { RecipeStep } from '../StepsListItem';
 
-const initialState = [
-  {
-    id: 1,
-    step: 1,
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ducimus reiciendis unde.',
-  },
-  {
-    id: 1,
-    step: 2,
-    description:
-      'Reprehenderit praesentium ipsa alias, sint, iure odit illo voluptate, quia cum distinctio qui adipisci',
-  },
-  {
-    id: 1,
-    step: 3,
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ut, nulla consectetur incidunt molestiae libero recusandae explicabo.',
-  },
-];
+type Props = {
+  steps: RecipeStep[];
+};
 
-export default (): JSX.Element => {
+export default (props: Props): JSX.Element => {
   return (
     <List sx={{ mt: '10px' }}>
-      {initialState.map((item) => (
-        <StepsListItem key={item.id} item={item} />
+      {props.steps.map((item, index) => (
+        <StepsListItem key={index} item={item} step={index + 1} />
       ))}
     </List>
   );

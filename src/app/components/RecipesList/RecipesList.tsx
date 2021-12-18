@@ -5,7 +5,7 @@ import CardDefault from '../RecipeCards/CardDefault';
 const initialState = [
   {
     id: 1,
-    title: 'Tasty Pasta',
+    title: 'Warm Couscous Salad',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ducimus reiciendis unde.',
   },

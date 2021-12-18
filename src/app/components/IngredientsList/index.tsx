@@ -1,15 +1,14 @@
 import React from 'react';
 import List from '@mui/material/List/List';
 import IngredientListItem from '../IngredientListItem';
+import type { RecipeIngredient } from '../IngredientListItem';
 import { Typography } from '@mui/material';
 
-const initialState = [
-  { id: 1, amount: '300g', title: 'pasta' },
-  { id: 2, amount: '100g', title: 'pesto' },
-  { id: 3, amount: '30ml', title: 'olive oil' },
-];
+type Props = {
+  ingredients: RecipeIngredient[];
+};
 
-export default () => {
+export default (props: Props) => {
   return (
     <>
       <List
@@ -26,8 +25,8 @@ export default () => {
         >
           ingredients
         </Typography>
-        {initialState.map((item) => (
-          <IngredientListItem key={item.id} item={item} />
+        {props.ingredients.map((item, index) => (
+          <IngredientListItem key={index} item={item} />
         ))}
       </List>
     </>
