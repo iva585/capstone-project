@@ -8,7 +8,7 @@ import {
   ImageListItemBar,
   Input,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import TagList from '../TagList/TagList';
 import AddTextItem from './AddTextItem';
