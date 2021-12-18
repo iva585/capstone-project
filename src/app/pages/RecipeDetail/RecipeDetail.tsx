@@ -47,8 +47,9 @@ export default (): JSX.Element => {
       dispatch(
         deleteRecipe({
           ...recipe,
-        }) && navigate('/')
-      );
+        })
+      ) &&
+      navigate('/');
   };
 
   return (
