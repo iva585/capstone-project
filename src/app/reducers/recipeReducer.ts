@@ -8,7 +8,7 @@ import {
 import type { Recipe } from '../pages/RecipeDetail/RecipeDetail';
 
 const recipeSlice = createSlice({
-  name: 'Recipe',
+  name: 'recipes',
   initialState: getAllRecipeItemsFromStorage(),
   reducers: {
     deleteRecipe(state, action: PayloadAction<Recipe>) {

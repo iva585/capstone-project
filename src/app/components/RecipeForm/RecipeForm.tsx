@@ -8,67 +8,79 @@ import {
   ImageListItemBar,
   Input,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
-import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
 import TagList from '../TagList/TagList';
 import AddTextItem from './AddTextItem';
 import StepsList from '../StepsList';
 import AddIngredient from './AddIngredient';
 import type { RecipeIngredient } from '../IngredientListItem';
 import IngredientsList from '../IngredientsList';
+import {
+  resetFormState,
+  updateRecipeFormData,
+} from '../../reducers/recipeFormReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../store';
 
-const initialData: Omit<Recipe, 'id'> = {
-  title: '',
-  description: '',
-  ingredients: [],
-  steps: [],
-  tags: [],
+type Props = {
+  onCancel: () => void;
 };
 
-export default (): JSX.Element => {
-  const [recipeData, setRecipeData] = useState<Omit<Recipe, 'id'>>(initialData);
+export default (props: Props): JSX.Element => {
+  const dispatch = useDispatch();
+  const recipeData = useSelector((state: RootState) => state.recipeForm);
+
+  const handleCancel = () => {
+    resetFormState();
+    props.onCancel();
+  };
 
   const addTag = (tagName: string) => {
-    setRecipeData({
-      ...recipeData,
-      tags: [...recipeData.tags, tagName],
-    });
+    dispatch(
+      updateRecipeFormData({
+        tags: [...recipeData.tags, tagName],
+      })
+    );
   };
 
   const addStep = (description: string) => {
-    setRecipeData({
-      ...recipeData,
-      steps: [
-        ...recipeData.steps,
-        {
-          description,
-        },
-      ],
-    });
+    dispatch(
+      updateRecipeFormData({
+        steps: [
+          ...recipeData.steps,
+          {
+            description,
+          },
+        ],
+      })
+    );
   };
 
   const addIngredient = (ingredient: RecipeIngredient) => {
-    setRecipeData({
-      ...recipeData,
-      ingredients: [...recipeData.ingredients, ingredient],
-    });
+    dispatch(
+      updateRecipeFormData({
+        ingredients: [...recipeData.ingredients, ingredient],
+      })
+    );
   };
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRecipeData({
-      ...recipeData,
-      title: event.target.value,
-    });
+    dispatch(
+      updateRecipeFormData({
+        title: event.target.value,
+      })
+    );
   };
 
   const handleDescriptionChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setRecipeData({
-      ...recipeData,
-      description: event.target.value,
-    });
+    dispatch(
+      updateRecipeFormData({
+        description: event.target.value,
+      })
+    );
   };
 
   return (
@@ -148,7 +160,7 @@ export default (): JSX.Element => {
         <TagList tags={recipeData.tags} />
       </Box>
       <Box sx={{ p: 2 }}>
-        <Button variant="outlined" color="error">
+        <Button onClick={handleCancel} variant="outlined" color="error">
           Cancel
         </Button>
       </Box>

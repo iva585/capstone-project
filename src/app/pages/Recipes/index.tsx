@@ -7,14 +7,29 @@ import './index.css';
 import HeaderRecipes from '../../components/Headers/HeaderRecipes';
 import StarredRecipesList from '../../components/StarredRecipesList/StarredRecipesList';
 import RecipeForm from '../../components/RecipeForm/RecipeForm';
+import { resetFormState } from '../../reducers/recipeFormReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { addRecipe } from '../../reducers/recipeReducer';
+import type { RootState } from '../../store';
 
 export default (): JSX.Element => {
+  const dispatch = useDispatch();
+  const recipeFormData = useSelector((state: RootState) => state.recipeForm);
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
+
+  const handleCancelForm = () => {
+    setNewRecipe((newRecipe) => !newRecipe);
+  };
+  const handleSubmitForm = () => {
+    dispatch(addRecipe(recipeFormData));
+    dispatch(resetFormState());
+  };
+
   return (
     <>
       <main className="padding">
         {newRecipe ? (
-          <RecipeForm />
+          <RecipeForm onCancel={handleCancelForm} />
         ) : (
           <>
             <HeaderRecipes />
@@ -27,7 +42,13 @@ export default (): JSX.Element => {
         actionButtonIcon={
           newRecipe ? <DoneOutlinedIcon /> : <EditOutlinedIcon />
         }
-        onClickActionButton={() => setNewRecipe((newRecipe) => !newRecipe)}
+        onClickActionButton={() => {
+          if (newRecipe) {
+            handleSubmitForm();
+            alert('Recipe saved!');
+          }
+          setNewRecipe((newRecipe) => !newRecipe);
+        }}
       />
     </>
   );
