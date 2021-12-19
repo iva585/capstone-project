@@ -37,7 +37,6 @@ export default (): JSX.Element => {
   };
 
   const filterRecipes = (searchInput: string) => {
-    console.log(searchInput);
     setFileterdRecipes(
       !searchInput
         ? recipes
@@ -46,8 +45,6 @@ export default (): JSX.Element => {
           )
     );
   };
-
-  console.log(filteredRecipes);
 
   return (
     <>
