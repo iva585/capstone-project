@@ -29,8 +29,9 @@ export default (props: Props): JSX.Element => {
       <Card>
         <Box
           sx={{
-            height: '200px',
             overflow: 'hidden',
+            alignSelf: 'center',
+            height: '200px',
           }}
         >
           <img
