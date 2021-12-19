@@ -14,7 +14,7 @@ export type StepItemType = {
   id: number;
   title: string;
   description: string;
-  image?: string;
+  image: string | null;
 };
 
 type Props = {
