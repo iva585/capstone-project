@@ -11,11 +11,15 @@ import { resetFormState } from '../../reducers/recipeFormReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRecipe } from '../../reducers/recipeReducer';
 import type { RootState } from '../../store';
+import type { Recipe } from '../RecipeDetail/RecipeDetail';
 
 export default (): JSX.Element => {
   const dispatch = useDispatch();
+  const recipes = useSelector((state: RootState) => state.recipes);
+
   const recipeFormData = useSelector((state: RootState) => state.recipeForm);
   const [newRecipe, setNewRecipe] = useState<boolean>(false);
+  const [filteredRecipes, setFileterdRecipes] = useState<Recipe[]>(recipes);
 
   const resetForm = () => {
     dispatch(resetFormState());
@@ -32,6 +36,18 @@ export default (): JSX.Element => {
     resetForm();
   };
 
+  const filterRecipes = (searchInput: string) => {
+    setFileterdRecipes(
+      !searchInput
+        ? filteredRecipes
+        : recipes.filter((recipe) =>
+            recipe.title.toLowerCase().includes(searchInput.toLowerCase())
+          )
+    );
+  };
+
+  console.log(filteredRecipes);
+
   return (
     <>
       <main className="padding">
@@ -39,9 +55,9 @@ export default (): JSX.Element => {
           <RecipeForm onCancel={handleCancelForm} />
         ) : (
           <>
-            <HeaderRecipes />
-            <StarredRecipesList />
-            <RecipesList />
+            <HeaderRecipes onSearchInputChanged={filterRecipes} />
+            <StarredRecipesList recipes={filteredRecipes} />
+            <RecipesList recipes={filteredRecipes} />
           </>
         )}
       </main>

@@ -1,11 +1,13 @@
 import { List, Typography } from '@mui/material';
 import React from 'react';
-import { getAllRecipeItemsFromStorage } from '../../api/storage/recipes';
+import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
 import CardDefault from '../RecipeCards/CardDefault';
 
-const recipes = getAllRecipeItemsFromStorage();
+type Props = {
+  recipes: Recipe[];
+};
 
-export default (): JSX.Element => {
+export default (props: Props): JSX.Element => {
   return (
     <List sx={{ display: 'flex', flexDirection: 'column', p: '7px' }}>
       <Typography
@@ -18,7 +20,7 @@ export default (): JSX.Element => {
       >
         All Recipes
       </Typography>
-      {recipes.map((item) => (
+      {props.recipes.map((item) => (
         <CardDefault key={item.id} item={item} />
       ))}
     </List>
