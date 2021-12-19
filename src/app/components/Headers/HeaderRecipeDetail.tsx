@@ -41,7 +41,14 @@ export default (): JSX.Element => {
         flexDirection: 'column',
       }}
     >
-      <Box sx={{ width: '100%', height: '200px', overflow: 'hidden' }}>
+      <Box
+        sx={{
+          width: '100%',
+          height: '200px',
+          overflow: 'hidden',
+          alignSelf: 'center',
+        }}
+      >
         <img
           className="image-header"
           src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
