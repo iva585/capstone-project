@@ -40,7 +40,7 @@ export default (props: Props): JSX.Element => {
             <img
               className="image-header"
               src={props.item.image}
-              alt="pesto pasta"
+              alt="recipe image"
             />
           )}
         </Box>

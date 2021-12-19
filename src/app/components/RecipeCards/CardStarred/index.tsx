@@ -8,6 +8,7 @@ export type StepItemType = {
   id: number;
   title: string;
   description: string;
+  image: string;
 };
 
 type Props = {
@@ -42,11 +43,13 @@ export default (props: Props): JSX.Element => {
           maxWidth: '50%',
         }}
       >
-        <img
-          className="image-responsive"
-          src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
-          alt="pesto pasta"
-        />
+        {props.item.image && (
+          <img
+            className="image-responsive"
+            src={props.item.image}
+            alt="recipe image"
+          />
+        )}
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto', height: '100%' }}>
