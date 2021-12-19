@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 export type StepItemType = {
   id: number;
@@ -20,6 +21,9 @@ type Props = {
 };
 
 export default (props: Props): JSX.Element => {
+  const navigate = useNavigate();
+  const recipeId = props.item.id;
+
   return (
     <ListItem>
       <Card>
@@ -45,7 +49,13 @@ export default (props: Props): JSX.Element => {
         </CardContent>
 
         <CardActions>
-          <Button size="small" color="primary">
+          <Button
+            onClick={() => {
+              navigate(`/recipe/${recipeId}`);
+            }}
+            size="small"
+            color="primary"
+          >
             View full recipe
           </Button>
         </CardActions>
