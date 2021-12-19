@@ -92,6 +92,38 @@ export default (props: Props): JSX.Element => {
     );
   };
 
+  const updateImage = (image: string) => {
+    dispatch(
+      updateRecipeFormData({
+        image,
+      })
+    );
+  };
+
+  const uploadImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) {
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    const fileSizeInMb = file.size / (1024 * 1024);
+
+    if (fileSizeInMb > 5) {
+      alert('Image must not be larger than 5MB!');
+      return;
+    }
+
+    reader.onload = function () {
+      updateImage(reader.result as string);
+    };
+    reader.onerror = function () {
+      console.error('Image could not be uploaded...');
+    };
+  };
+
   return (
     <>
       <Box
@@ -108,11 +140,13 @@ export default (props: Props): JSX.Element => {
             alignSelf: 'center',
           }}
         >
-          <img
-            className="image-header"
-            src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
-            alt="pesto pasta"
-          />
+          {recipeData.image && (
+            <img
+              className="image-header"
+              src={recipeData.image}
+              alt="pesto pasta"
+            />
+          )}
           <ImageListItemBar
             sx={{
               background:
@@ -131,6 +165,14 @@ export default (props: Props): JSX.Element => {
             }
             actionPosition="right"
           />
+          <Button
+            sx={{ width: '100%', height: 200 }}
+            variant="contained"
+            component="label"
+          >
+            Upload File
+            <input onChange={uploadImage} type="file" hidden />
+          </Button>
         </Box>
         <Card
           sx={{
@@ -139,6 +181,7 @@ export default (props: Props): JSX.Element => {
             width: '70%',
             p: 0,
             borderRadius: '20px',
+            zIndex: 1,
           }}
         >
           <CardContent

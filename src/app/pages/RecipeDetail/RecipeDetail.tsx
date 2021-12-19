@@ -22,6 +22,7 @@ export type Recipe = {
   steps: RecipeStep[];
   tags: string[];
   starred: boolean;
+  image: string | null;
 };
 
 type RecipeParams = 'recipeId';

@@ -14,6 +14,7 @@ export type StepItemType = {
   id: number;
   title: string;
   description: string;
+  image?: string;
 };
 
 type Props = {
@@ -26,19 +27,22 @@ export default (props: Props): JSX.Element => {
 
   return (
     <ListItem>
-      <Card>
+      <Card sx={{ width: '430px', height: '400px' }}>
         <Box
           sx={{
             overflow: 'hidden',
             alignSelf: 'center',
             height: '200px',
+            display: 'flex',
           }}
         >
-          <img
-            className="image-header"
-            src="https://cdn.pickuplimes.com/cache/d6/03/d603ee859a939e049aa60507401ec2fe.jpg"
-            alt="pesto pasta"
-          />
+          {props.item.image && (
+            <img
+              className="image-header"
+              src={props.item.image}
+              alt="pesto pasta"
+            />
+          )}
         </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
