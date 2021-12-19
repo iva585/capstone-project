@@ -37,9 +37,10 @@ export default (): JSX.Element => {
   };
 
   const filterRecipes = (searchInput: string) => {
+    console.log(searchInput);
     setFileterdRecipes(
       !searchInput
-        ? filteredRecipes
+        ? recipes
         : recipes.filter((recipe) =>
             recipe.title.toLowerCase().includes(searchInput.toLowerCase())
           )
