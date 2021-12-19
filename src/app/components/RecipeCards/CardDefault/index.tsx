@@ -27,7 +27,7 @@ export default (props: Props): JSX.Element => {
 
   return (
     <ListItem>
-      <Card sx={{ width: '430px', height: '400px' }}>
+      <Card sx={{ width: '430px', height: '350px' }}>
         <Box
           sx={{
             overflow: 'hidden',
