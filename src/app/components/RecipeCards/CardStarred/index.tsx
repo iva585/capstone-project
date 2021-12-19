@@ -2,6 +2,7 @@ import './index.css';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export type StepItemType = {
   id: number;
@@ -14,6 +15,9 @@ type Props = {
 };
 
 export default (props: Props): JSX.Element => {
+  const navigate = useNavigate();
+  const recipeId = props.item.id;
+
   const truncateText = (text: string, characterCount: number) =>
     text.length > characterCount
       ? `${text.substr(0, characterCount - 1)}...`
@@ -21,6 +25,9 @@ export default (props: Props): JSX.Element => {
 
   return (
     <Card
+      onClick={() => {
+        navigate(`/recipe/${recipeId}`);
+      }}
       sx={{
         display: 'flex',
         minWidth: '320px',
