@@ -19,10 +19,23 @@ const recipeSlice = createSlice({
     addRecipe(state, action: PayloadAction<Omit<Recipe, 'id'>>) {
       return [...state, addRecipeItemToStorage(action.payload)];
     },
+
+    updateRecipeData(state, action: PayloadAction<Recipe>) {
+      const updatedRecipe = {
+        ...state.find((item) => item.id === action.payload.id),
+        ...action.payload,
+      };
+
+      return [
+        ...state.filter((item) => item.id !== action.payload.id),
+        updatedRecipe,
+      ];
+    },
   },
 });
 
 export const { deleteRecipe } = recipeSlice.actions;
 export const { addRecipe } = recipeSlice.actions;
+export const { updateRecipeData } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

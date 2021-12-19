@@ -10,13 +10,16 @@ import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import React from 'react';
 import './index.css';
 import type { RootState } from '../../store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
+import { updateRecipeData } from '../../reducers/recipeReducer';
 
 type RecipeParams = 'recipeId';
 
 export default (): JSX.Element => {
   const { recipeId } = useParams<RecipeParams>();
+  const dispatch = useDispatch();
 
   const recipe = useSelector((state: RootState) =>
     state.recipes.find((recipe) => recipe.id === parseInt(recipeId ?? ''))
@@ -26,6 +29,10 @@ export default (): JSX.Element => {
     //@TODO: Write 404 component
     return <div>Recipe not found</div>;
   }
+
+  const toggleStarred = () => {
+    dispatch(updateRecipeData({ ...recipe, starred: !recipe.starred }));
+  };
 
   return (
     <Box
@@ -48,8 +55,12 @@ export default (): JSX.Element => {
           }}
           position="top"
           actionIcon={
-            <IconButton sx={{ color: 'white' }} aria-label="tasty pesto pasta">
-              <StarBorderRoundedIcon />
+            <IconButton onClick={toggleStarred} sx={{ color: 'white' }}>
+              {recipe.starred ? (
+                <StarRateRoundedIcon />
+              ) : (
+                <StarBorderRoundedIcon />
+              )}
             </IconButton>
           }
           actionPosition="right"
