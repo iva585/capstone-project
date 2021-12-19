@@ -37,8 +37,21 @@ const removeRecipeItemFromStorage = (id: number): void => {
   setItems(items.filter((item) => item.id !== id));
 };
 
+const updateRecipeItemInStorage = (data: Recipe): void => {
+  const items = getAllRecipeItemsFromStorage();
+  setItems(
+    items.map((item) => {
+      if (item.id === data.id) {
+        return data;
+      }
+      return item;
+    })
+  );
+};
+
 export {
   getAllRecipeItemsFromStorage,
   addRecipeItemToStorage,
   removeRecipeItemFromStorage,
+  updateRecipeItemInStorage,
 };
