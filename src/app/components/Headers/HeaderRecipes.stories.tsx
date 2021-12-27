@@ -6,4 +6,6 @@ export default {
   component: HeaderRecipes,
 };
 
-export const HeaderRecipe = (): JSX.Element => <HeaderRecipes />;
+export const HeaderRecipe = (): JSX.Element => (
+  <HeaderRecipes onSearchInputChanged={() => ''} />
+);

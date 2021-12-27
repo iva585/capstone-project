@@ -1,7 +1,7 @@
 import Add from '@mui/icons-material/Add';
 import Close from '@mui/icons-material/Close';
 import React from 'react';
-import Footer from '.';
+import Footer from './FooterDefault';
 
 export default {
   title: 'Component/Footer',

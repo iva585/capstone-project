@@ -1,16 +1,18 @@
-import { CssBaseline, Divider } from '@mui/material';
-import React, { useState } from 'react';
+import { Box, Button, CssBaseline, Divider } from '@mui/material';
+import React from 'react';
 import Header from '../../components/Headers/HeaderRecipeDetail';
 import StepsList from '../../components/StepsList';
 import IngredientsList from '../../components/IngredientsList';
-import Footer from '../../components/Footer';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+import Footer from '../../components/Footers/FooterDefault';
 import './index.css';
 import TagList from '../../components/TagList/TagList';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import type { RecipeIngredient } from '../../components/IngredientListItem';
 import type { RecipeStep } from '../../components/StepsListItem';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../store';
+import { deleteRecipe } from '../../reducers/recipeReducer';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export type Recipe = {
   id: number;
@@ -19,51 +21,39 @@ export type Recipe = {
   ingredients: RecipeIngredient[];
   steps: RecipeStep[];
   tags: string[];
-};
-
-const mockRecipe: Recipe = {
-  id: 1,
-  title: 'Pasta pesto',
-  description: 'Lorem ipsum dolor sir amet',
-  ingredients: [
-    { amount: '300g', title: 'pasta' },
-    { amount: '100g', title: 'pesto' },
-    { amount: '30ml', title: 'olive oil' },
-  ],
-  steps: [
-    {
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ducimus reiciendis unde.',
-    },
-    {
-      description:
-        'Reprehenderit praesentium ipsa alias, sint, iure odit illo voluptate, quia cum distinctio qui adipisci',
-    },
-    {
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ut, nulla consectetur incidunt molestiae libero recusandae explicabo.',
-    },
-  ],
-  tags: [
-    'dinner',
-    'pasta',
-    'italian',
-    'dinner',
-    'pasta',
-    'italian',
-    'pasta',
-    'italian',
-  ],
+  starred: boolean;
+  image: string | null;
 };
 
 type RecipeParams = 'recipeId';
 
 export default (): JSX.Element => {
-  const [editing, setEditing] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { recipeId } = useParams<RecipeParams>();
-  console.log('recipeId: ', recipeId);
 
-  const recipe = mockRecipe;
+  const recipe = useSelector((state: RootState) =>
+    state.recipes.find((recipe) => recipe.id === parseInt(recipeId ?? ''))
+  );
+
+  if (!recipe) {
+    //@TODO: Write 404 component
+    return <div>Recipe not found</div>;
+  }
+
+  const handleDelete = () => {
+    confirm('Are you sure? Your recipe will be deleted permanently!') &&
+      dispatch(
+        deleteRecipe({
+          ...recipe,
+        })
+      ) &&
+      navigate('/');
+  };
+
+  const handleBackButtonClick = () => {
+    navigate('/');
+  };
 
   return (
     <>
@@ -76,10 +66,15 @@ export default (): JSX.Element => {
         <Divider variant="middle" />
         <Divider variant="middle" />
         <TagList tags={recipe.tags} />
+        <Box sx={{ p: 2 }}>
+          <Button onClick={handleDelete} variant="outlined" color="error">
+            Delete
+          </Button>
+        </Box>
       </main>
       <Footer
-        actionButtonIcon={editing ? <DoneOutlinedIcon /> : <EditOutlinedIcon />}
-        onClickActionButton={() => setEditing((editing) => !editing)}
+        actionButtonIcon={<ArrowBackIcon />}
+        onClickActionButton={handleBackButtonClick}
       />
     </>
   );

@@ -3,7 +3,7 @@ import { List, CssBaseline } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ListForm from '../../components/ListForm';
 import ShoppingListItem from '../../components/ShoppingListItem';
-import Footer from '../../components/Footer';
+import Footer from '../../components/Footers/FooterDefault';
 import type { RootState } from '../../store';
 import Close from '@mui/icons-material/Close';
 import Add from '@mui/icons-material/Add';

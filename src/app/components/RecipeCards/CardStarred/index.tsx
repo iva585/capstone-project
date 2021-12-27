@@ -2,11 +2,13 @@ import './index.css';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export type StepItemType = {
   id: number;
   title: string;
   description: string;
+  image: string | null;
 };
 
 type Props = {
@@ -14,6 +16,9 @@ type Props = {
 };
 
 export default (props: Props): JSX.Element => {
+  const navigate = useNavigate();
+  const recipeId = props.item.id;
+
   const truncateText = (text: string, characterCount: number) =>
     text.length > characterCount
       ? `${text.substr(0, characterCount - 1)}...`
@@ -21,6 +26,9 @@ export default (props: Props): JSX.Element => {
 
   return (
     <Card
+      onClick={() => {
+        navigate(`/recipe/${recipeId}`);
+      }}
       sx={{
         display: 'flex',
         minWidth: '320px',
@@ -35,11 +43,13 @@ export default (props: Props): JSX.Element => {
           maxWidth: '50%',
         }}
       >
-        <img
-          className="image-responsive"
-          src="https://images.unsplash.com/photo-1616299908398-9af1134ad522?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80"
-          alt="pesto pasta"
-        />
+        {props.item.image && (
+          <img
+            className="image-responsive"
+            src={props.item.image}
+            alt="recipe image"
+          />
+        )}
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto', height: '100%' }}>
