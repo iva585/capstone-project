@@ -9,6 +9,7 @@ const initialState: Omit<Recipe, 'id'> = {
   steps: [],
   tags: [],
   starred: false,
+  image: '',
 };
 
 const recipeSlice = createSlice({
