@@ -1,16 +1,24 @@
-import { Typography } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import React from 'react';
+import CardStarred from '../RecipeCards/CardStarred';
 
-export default (): JSX.Element => (
-  <Typography
-    variant="h6"
-    sx={{
-      alignSelf: 'start',
-      pt: '70px',
-      pl: '22px',
-      textTransform: 'uppercase',
-    }}
-  >
-    My Birthday Menu
-  </Typography>
+type Props = { title: string };
+
+export default (props: Props): JSX.Element => (
+  <>
+    <Typography
+      variant="h6"
+      sx={{
+        alignSelf: 'start',
+        pt: '70px',
+        pl: '22px',
+        textTransform: 'uppercase',
+      }}
+    >
+      {props.title}
+    </Typography>
+    <List sx={{ display: 'flex', p: '16px', overflow: 'scroll' }}>
+      <CardStarred />
+    </List>
+  </>
 );
