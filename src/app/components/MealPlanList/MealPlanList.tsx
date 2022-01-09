@@ -1,8 +1,9 @@
 import { List, Typography } from '@mui/material';
 import React from 'react';
+import type { Recipe } from '../../pages/RecipeDetail/RecipeDetail';
 import CardStarred from '../RecipeCards/CardStarred';
 
-type Props = { title: string };
+type Props = { title: string; recipes: Recipe[] };
 
 export default (props: Props): JSX.Element => (
   <>
