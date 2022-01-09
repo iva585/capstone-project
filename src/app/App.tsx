@@ -4,6 +4,7 @@ import ShoppingList from './pages/ShoppingList/ShoppingList';
 import Inventory from './pages/Inventory/Inventory';
 import RecipeDetail from './pages/RecipeDetail/RecipeDetail';
 import Recipes from './pages/Recipes';
+import MealPlan from './pages/MealPlan/MealPlan';
 
 export default (): JSX.Element => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ export default (): JSX.Element => (
       <Route path="/shopping-list" element={<ShoppingList />} />
       <Route path="/inventory" element={<Inventory />} />
       <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
+      <Route path="/meal-plan" element={<MealPlan />} />
     </Routes>
   </BrowserRouter>
 );
