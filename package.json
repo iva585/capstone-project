@@ -9,7 +9,7 @@
     "build": "npm run build --prefix frontend",
     "dev": "npm run dev --prefix frontend",
     "serve": "npm run serve --prefix frontend",
-    "test": "npx prettier --check . && eslint . && stylelint \\\"frontend/**/*.css\\\"",
+    "test": "npx prettier --check . && eslint . && stylelint \"frontend/**/*.css\"",
     "storybook": "npm run storybook --prefix frontend",
     "storybook:build": "npm run storybook:build --prefix frontend"
   },
