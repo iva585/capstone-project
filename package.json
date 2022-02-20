@@ -6,6 +6,7 @@
     "postinstall": "npm i --prefix frontend && npm i --prefix backend && npm i --prefix infrastructure",
     "client:dev": "npm run client:dev --prefix frontend",
     "client:build": "npm run client:build --prefix frontend",
+    "prune:frontend": "npm prune --production --prefix frontend",
     "build": "npm run build --prefix frontend",
     "dev": "npm run dev --prefix frontend",
     "serve": "npm run serve --prefix frontend",
