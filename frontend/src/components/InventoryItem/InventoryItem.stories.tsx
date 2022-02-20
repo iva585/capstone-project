@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import InventoryItem from '.';
+import InventoryItem from './index';
 import { store } from '../../store';
 
 export default {
