@@ -47,7 +47,7 @@ export default (props: Props): JSX.Element => {
   };
 
   const handleChecked = () => {
-    props.item.checked === false &&
+    !props.item.checked &&
       dispatch(addInventoryItem(props.item.title));
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ListForm from '.';
+import ListForm from './index';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
 import { addShoppingListItem } from '../../reducers/shoppingListReducer';
