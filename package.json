@@ -1,5 +1,5 @@
 {
-  "name": "vite-boilerplate",
+  "name": "hamiti",
   "version": "0.0.0",
   "scripts": {
     "client:dev": "vite",
@@ -8,8 +8,7 @@
     "server:build": "tsc --project tsconfig.server.json",
     "build": "npm run server:build && npm run client:build && npm run storybook:build",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\" \"npm run storybook\"",
-    "serve": "vite preview",
-    "prepare": "husky install",
+    "serve": "vite",
     "test": "prettier --check . && eslint . && stylelint \"**/*.css\"",
     "start": "node dist/server.js",
     "storybook": "start-storybook -p 6006",
@@ -32,7 +31,6 @@
     "concurrently": "^6.4.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^6.0.0",
     "lint-staged": "^11.1.1",
     "prettier": "2.3.2",
     "storybook-builder-vite": "^0.1.10",
